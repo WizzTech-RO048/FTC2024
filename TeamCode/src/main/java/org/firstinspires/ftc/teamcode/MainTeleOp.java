@@ -14,12 +14,12 @@ import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledFuture;
 
-@TeleOp(name="FTC2024")
+@TeleOp(name="FTC2024")                                                                                                                                                                                                                                                             
 public class MainTeleOp extends OpMode {
 
     private Robot robot;
     private Controller controller1;
-    private SampleMecanumDrive drive;
+//    private SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
     private int raise_value, arm_value;
     public double RAISE_POWER = 1.0;
@@ -37,9 +37,7 @@ public class MainTeleOp extends OpMode {
         // --------- initializing the robot --------
         robot.gripper.release();
 
-        drive = new SampleMecanumDrive(hardwareMap);
-
-        drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//        drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
     }
 
@@ -53,16 +51,16 @@ public class MainTeleOp extends OpMode {
         // -------- controlling the robot movement ------
         // TOMICI: movement-ul ar trebui sa fie cel de roadrunner, nu am mai apucat sa il testez, dar ar trebui sa fie ok
         // (eventual doar pozitiile din joystick sa fie negative / pozitive)
-        drive.setWeightedDrivePower(
-                new Pose2d(
-                        -controller1.left_stick_y, // gen astea negative / pozitive sau schimbate intre ele
-                        -controller1.left_stick_x,
-                        -controller1.right_stick_x
-                )
-        );
+//        drive.setWeightedDrivePower(
+//                new Pose2d(
+//                        -controller1.left_stick_y, // gen astea negative / pozitive sau schimbate intre ele
+//                        -controller1.left_stick_x,
+//                        -controller1.right_stick_x
+//                )
+//        );
         // faci tu troubleshooting la tot :)
 
-        drive.update();
+//        drive.update();
 
         if (controller1.rightBumper()) {
             robot.gripper.grab();
@@ -83,9 +81,9 @@ public class MainTeleOp extends OpMode {
         // arm-ului cand se afla in functiune
         // ------- controlling the arm positions -----
         if(!Utils.isDone(lastArmMove)) { return ; }
-        else if (controller1.YOnce()) { arm_value = 500; }
-        else if (controller1.BOnce()) { arm_value = 300; }
-        else if (controller1.XOnce()) { arm_value = 150; }
+        else if (controller1.YOnce()) { arm_value = 1000; }
+        else if (controller1.BOnce()) { arm_value = 750; }
+        else if (controller1.XOnce()) { arm_value = 250; }
         else if (controller1.AOnce()) { arm_value = 0; }
         else { return ; }
 

@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="C:\WizzTech\FTC2024\TeamCode"
+    name=":TeamCode"
+    type="APP"
+    maven="FTC2024:TeamCode:"
+    gradle="7.2.0"
+    buildFolder="build"
+    bootClassPath="C:\Users\barse\AppData\Local\Android\Sdk\platforms\android-29\android.jar;C:\Users\barse\AppData\Local\Android\Sdk\build-tools\30.0.3\core-lambda-stubs.jar"
+    javaSourceLevel="1.8"
+    compileTarget="android-29"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>
