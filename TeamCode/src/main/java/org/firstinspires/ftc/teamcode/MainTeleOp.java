@@ -24,6 +24,7 @@ public class MainTeleOp extends OpMode {
     private int raise_value, arm_value;
     public double RAISE_POWER = 1.0;
     private boolean closed;
+    private boolean gheare;
     private ScheduledFuture<?> lastArmMove, lastSliderMove;
 
     @Override
@@ -86,9 +87,12 @@ public class MainTeleOp extends OpMode {
         }
 
         if (controller1.dpadRightOnce()) {
-            robot.gripper.leavePixels();
-        } else if (controller1.dpadLeftOnce()) {
-            robot.gripper.pickPixels();
+            if ( gheare==true){
+                robot.gripper.leavePixels();
+            }else{
+                robot.gripper.pickPixels();
+            }
+            gheare = !gheare;
         }
 
 
@@ -100,7 +104,7 @@ public class MainTeleOp extends OpMode {
 
         // ------- controlling the arm positions -----
         else if (controller1.YOnce()) {
-            arm_value = 1000;
+            arm_value = 835;
 //            armIsUp = true;
             lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
         } else if (controller1.BOnce()) {
