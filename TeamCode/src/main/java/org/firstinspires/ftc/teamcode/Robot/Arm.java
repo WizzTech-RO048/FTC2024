@@ -3,10 +3,7 @@ package org.firstinspires.ftc.teamcode.Robot;
 import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.*;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.Objects;
@@ -22,8 +19,10 @@ public class Arm {
     private final ScheduledExecutorService scheduler;
 
     private final DcMotorEx arm;
+    private final Servo gripper_rotation_left, gripper_rotation_right;
 
-//    private final int armRaisedPosition;
+    private final double LEFT_INITIAL_POS = 0.0, RIGHT_INITIAL_POS = 0.97;
+    private final double LEFT_RELEASE_POS = 0.97-0.45, RIGHT_RELEASE_POS = 0.0+0.45;
 
     Arm(@NonNull final Parameters parameters) {
         scheduler = Objects.requireNonNull(parameters.scheduler, "Scheduler was not set");
@@ -34,6 +33,9 @@ public class Arm {
         arm.setDirection(DcMotorSimple.Direction.FORWARD);
         arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        gripper_rotation_left = hardwareMap.get(Servo.class, "gripper_rotation_left");
+        gripper_rotation_right = hardwareMap.get(Servo.class, "gripper_rotation_right");
     }
 
     private ScheduledFuture<?> raiseArm = null;
@@ -60,8 +62,18 @@ public class Arm {
     }
 
 
-    public int getCurrentPositionSlider() {
+    public int getCurrentPositionArm() {
         return arm.getCurrentPosition();
+    }
+
+    public void gripperInitialPos() {
+        gripper_rotation_left.setPosition(LEFT_INITIAL_POS);
+        gripper_rotation_right.setPosition(RIGHT_INITIAL_POS);
+    }
+
+    public void gripperReleasePos() {
+        gripper_rotation_left.setPosition(LEFT_RELEASE_POS);
+        gripper_rotation_right.setPosition(RIGHT_RELEASE_POS);
     }
 
     public void stopArm() {
