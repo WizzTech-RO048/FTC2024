@@ -23,8 +23,9 @@ public class MainTeleOp extends OpMode {
 
     private int raise_value, arm_value;
     public double RAISE_POWER = 1.0;
-    private boolean closed;
-    private boolean gheare;
+    private boolean closed, gripper_released;
+    private boolean gheare, sculatoare;
+    private int slider_level = 0;
     private ScheduledFuture<?> lastArmMove, lastSliderMove;
 
     @Override
@@ -45,7 +46,8 @@ public class MainTeleOp extends OpMode {
 
         robot.gripper.openBarier();
         closed = false;
-
+        sculatoare = false;
+        gripper_released = false;
     }
 
     // ------ the emergency stop function ---------
@@ -73,8 +75,10 @@ public class MainTeleOp extends OpMode {
 
         if (controller1.leftBumper()) {
             robot.arm.gripperReleasePos();
+            gripper_released = true;
         } else if (controller1.rightBumper()) {
             robot.arm.gripperInitialPos();
+            gripper_released = false;
         }
 
         if (controller1.dpadLeftOnce()) {
@@ -87,15 +91,22 @@ public class MainTeleOp extends OpMode {
         }
 
         if (controller1.dpadRightOnce()) {
-            if ( gheare==true){
+            if (gheare == true){
                 robot.gripper.leavePixels();
-            }else{
+            }else {
                 robot.gripper.pickPixels();
             }
             gheare = !gheare;
         }
 
-
+        if (controller1.startButtonOnce()) {
+            if (sculatoare == true) {
+                robot.lift.liftArmsDown();
+            } else {
+                robot.lift.liftArmsUp();
+            }
+            sculatoare = !sculatoare;
+        }
 
         // pana aici sa scrii cod
         if(!Utils.isDone(lastArmMove) || !Utils.isDone(lastSliderMove)) {
@@ -119,11 +130,26 @@ public class MainTeleOp extends OpMode {
         }
 
         // ------- controlling the slider positions -----
+//        else if (controller1.dpadUpOnce()) {
+//            raise_value = 3000;
+//            lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
+//        } else if (controller1.dpadDownOnce()) {
+//            raise_value = 0;
+//            lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
+//        }
+
+
         else if (controller1.dpadUpOnce()) {
-            raise_value = 2500;
+            if (slider_level < 5) {
+                slider_level = slider_level + 1;
+            }
+            raise_value = 600 * slider_level;
             lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
-        } else if (controller1.dpadDownOnce()) {
-            raise_value = 0;
+        } else if (controller1.dpadDownOnce() && gripper_released == false) {
+            if (slider_level > 0) {
+                slider_level = slider_level - 1;
+            }
+            raise_value = 600 * slider_level;
             lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
         }
 

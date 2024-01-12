@@ -8,6 +8,7 @@ public class Controller {
     private int x, y, a, b;
     private int dpad_up, dpad_down, dpad_right, dpad_left;
     private int left_bumper, right_bumper;
+    private int start_button;
 
     public double left_stick_x, left_stick_y;
     public double right_stick_x, right_stick_y;
@@ -34,6 +35,8 @@ public class Controller {
         // -------- reading data from bumpers and triggers -------
         if(gamepad.left_bumper) { left_bumper++; } else { left_bumper = 0; }
         if(gamepad.right_bumper) { right_bumper++; } else { right_bumper = 0; }
+
+        if(gamepad.start) { start_button++; } else { start_button = 0; }
 
         left_trigger = gamepad.left_trigger;
         right_trigger = gamepad.right_trigger;
@@ -70,5 +73,7 @@ public class Controller {
 
     public boolean leftBumperOnce() { return left_bumper == 1; }
     public boolean rightBumperOnce() { return right_bumper == 1; }
+
+    public boolean startButtonOnce() { return start_button == 1; }
 
 }

@@ -18,6 +18,7 @@ public class Robot {
     public Arm arm;
     public Plane plane;
     public Gripper gripper;
+    public Lift lift;
 
     public Robot(final HardwareMap hardwareMap, final Telemetry t, ScheduledExecutorService scheduler) {
         telemetry = t;
@@ -48,6 +49,12 @@ public class Robot {
         gripper_parameters.telemetry = telemetry;
         gripper_parameters.hardwareMap = hardwareMap;
         gripper = new Gripper(gripper_parameters);
+
+        Lift.Parameters lift_parameters = new Lift.Parameters();
+        lift_parameters.telemetry = telemetry;
+        lift_parameters.hardwareMap = hardwareMap;
+        lift_parameters.scheduler = scheduler;
+        lift = new Lift(lift_parameters);
 
     }
 
