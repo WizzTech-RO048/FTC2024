@@ -87,16 +87,16 @@ public class Lift {
 
         return raiseArmLiftLeft;
     }
-
-    public void liftArmsUp() {
-        lift_servo_left.setPosition(LEFT_LIFT_UP);
-        lift_servo_right.setPosition(RIGHT_LIFT_UP);
-    }
-
-    public void liftArmsDown() {
-        lift_servo_left.setPosition(LEFT_LIFT_DOWN);
-        lift_servo_right.setPosition(RIGHT_LIFT_DOWN);
-    }
+//
+//    public void liftArmsUp() {
+//        lift_servo_left.setPosition(LEFT_LIFT_UP);
+//        lift_servo_right.setPosition(RIGHT_LIFT_UP);
+//    }
+//
+//    public void liftArmsDown() {
+//        lift_servo_left.setPosition(LEFT_LIFT_DOWN);
+//        lift_servo_right.setPosition(RIGHT_LIFT_DOWN);
+//    }
 
     public static class Parameters {
         public HardwareMap hardwareMap;

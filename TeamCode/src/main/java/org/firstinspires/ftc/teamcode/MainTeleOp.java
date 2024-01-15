@@ -24,7 +24,8 @@ public class MainTeleOp extends OpMode {
     private int raise_value, arm_value;
     public double RAISE_POWER = 1.0;
     private boolean closed, gripper_released;
-    private boolean gheare, sculatoare;
+    private boolean sculatoare;
+    private int gheare = 0;
     private int slider_level = 0;
     private ScheduledFuture<?> lastArmMove, lastSliderMove;
 
@@ -41,8 +42,13 @@ public class MainTeleOp extends OpMode {
 //        robot.gripper.release();
         robot.gripper.defaultPickupPixelPos();
 
+        gheare = 1;
+
+        robot.plane.grabPlane();
+
         drive = new SampleMecanumDrive(hardwareMap);
         drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
 
         robot.gripper.openBarier();
         closed = false;
@@ -72,6 +78,9 @@ public class MainTeleOp extends OpMode {
 //        drive.update();
         // de aici sa incepi sa scrii cod
 
+        if (controller1.startButtonOnce()){
+            robot.plane.releasePlane();
+        }
 
         if (controller1.leftBumper()) {
             robot.arm.gripperReleasePos();
@@ -81,7 +90,7 @@ public class MainTeleOp extends OpMode {
             gripper_released = false;
         }
 
-        if (controller1.dpadLeftOnce()) {
+        if (controller1.dpadRightOnce()) {
             if (closed == true) {
                 robot.gripper.openBarier();
             } else {
@@ -90,22 +99,15 @@ public class MainTeleOp extends OpMode {
             closed = !closed;
         }
 
-        if (controller1.dpadRightOnce()) {
-            if (gheare == true){
+        if (controller1.dpadLeftOnce()) {
+            gheare = gheare + 1;
+            if (gheare % 3 == 0){
                 robot.gripper.leavePixels();
-            }else {
+            }else if (gheare % 3 == 1){
+                robot.gripper.defaultPickupPixelPos();
+            } else if (gheare % 3 == 2) {
                 robot.gripper.pickPixels();
             }
-            gheare = !gheare;
-        }
-
-        if (controller1.startButtonOnce()) {
-            if (sculatoare == true) {
-                robot.lift.liftArmsDown();
-            } else {
-                robot.lift.liftArmsUp();
-            }
-            sculatoare = !sculatoare;
         }
 
         // pana aici sa scrii cod
@@ -138,10 +140,12 @@ public class MainTeleOp extends OpMode {
 //            lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
 //        }
 
-
         else if (controller1.dpadUpOnce()) {
             if (slider_level < 5) {
                 slider_level = slider_level + 1;
+                if (slider_level == 1) {
+                    slider_level = slider_level + 1;
+                }
             }
             raise_value = 600 * slider_level;
             lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);

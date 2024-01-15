@@ -13,7 +13,7 @@ public class Gripper {
     private final double RELEASE_POSITION_2 = GRAB_POSITION_2-0.1;
 
     private final double LEFT_PICKUP = 0.0, RIGHT_PICKUP = 1.0-0.13;
-    private final double LEFT_RELEASE = 1.0-0.16, RIGHT_RELEASE = 0.16;
+    private final double LEFT_RELEASE = 1.0-0.30, RIGHT_RELEASE = 0.3;
     private final double LEFT_DEFAULT = 0.5, RIGHT_DEFAULT = 0.5;
 
     private final double OPEN_BARIER_POS = 0.3, CLOSE_BARIER_POS = 0.02;
