@@ -21,8 +21,8 @@ public class Lift {
     private final DcMotorEx right_lift, left_lift;
 
     private final Servo lift_servo_right, lift_servo_left;
-    private final double LEFT_LIFT_DOWN = 1.0, RIGHT_LIFT_DOWN = 0.5;
-    private final double LEFT_LIFT_UP = 0.5, RIGHT_LIFT_UP = 0.5;
+    private final double LEFT_LIFT_UP = 0.5, RIGHT_LIFT_UP = 0.3;
+    private final double LEFT_LIFT_DOWN = 0.1, RIGHT_LIFT_DOWN = 0.7;
 
 
     Lift(@NonNull final Parameters parameters) {
@@ -89,13 +89,13 @@ public class Lift {
     }
 
     public void setUpPosition() {
-        lift_servo_left.setPosition(LEFT_LIFT_DOWN);
-        lift_servo_right.setPosition(RIGHT_LIFT_DOWN);
+        lift_servo_left.setPosition(LEFT_LIFT_UP);
+        lift_servo_right.setPosition(RIGHT_LIFT_UP);
     }
 
     public void setDownPosition() {
-        lift_servo_left.setPosition(LEFT_LIFT_UP);
-        lift_servo_right.setPosition(RIGHT_LIFT_UP);
+        lift_servo_left.setPosition(LEFT_LIFT_DOWN);
+        lift_servo_right.setPosition(RIGHT_LIFT_DOWN);
     }
 
     public int getCurrentPositionArm() {

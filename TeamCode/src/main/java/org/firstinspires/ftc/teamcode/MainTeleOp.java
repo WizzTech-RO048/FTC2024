@@ -55,6 +55,7 @@ public class MainTeleOp extends OpMode {
         closed = false;
         sculatoare = false;
         gripper_released = false;
+        robot.lift.setDownPosition();
     }
 
     // ------ the emergency stop function ---------
