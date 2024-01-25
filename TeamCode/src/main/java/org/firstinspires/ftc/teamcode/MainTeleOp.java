@@ -28,6 +28,7 @@ public class MainTeleOp extends OpMode {
     private int gheare = 0;
     private int slider_level = 0;
     private ScheduledFuture<?> lastArmMove, lastSliderMove;
+    private ScheduledFuture<?> lastRightLift, lastLeftLift;
 
     @Override
     public void init() {
@@ -73,63 +74,85 @@ public class MainTeleOp extends OpMode {
                         -controller1.right_stick_x
                 )
         );
-        // faci tu troubleshooting la tot :)
 
-//        drive.update();
-        // de aici sa incepi sa scrii cod
+//        if (controller1.startButtonOnce()){
+//            robot.plane.releasePlane();
+//        }
+//
+//        if (controller1.leftBumper()) {
+//            robot.arm.gripperReleasePos();
+//            gripper_released = true;
+//        } else if (controller1.rightBumper()) {
+//            robot.arm.gripperInitialPos();
+//            gripper_released = false;
+//        }
+//
+//        if (controller1.dpadRightOnce()) {
+//            if (closed == true) {
+//                robot.gripper.openBarier();
+//            } else {
+//                robot.gripper.closeBarier();
+//            }
+//            closed = !closed;
+//        }
+//
+//        if (controller1.dpadLeftOnce()) {
+//            gheare = gheare + 1;
+//            if (gheare % 3 == 0){
+//                robot.gripper.leavePixels();
+//            }else if (gheare % 3 == 1){
+//                robot.gripper.defaultPickupPixelPos();
+//            } else if (gheare % 3 == 2) {
+//                robot.gripper.pickPixels();
+//            }
+//        }
 
-        if (controller1.startButtonOnce()){
-            robot.plane.releasePlane();
-        }
+        // pana aici sa scrii cod
+//        if(!Utils.isDone(lastArmMove) || !Utils.isDone(lastSliderMove)) {
+//            return ;
+//        }
+//
+//        // ------- controlling the arm positions -----
+//        else if (controller1.YOnce()) {
+//            arm_value = 835;
+////            armIsUp = true;
+//            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+//        } else if (controller1.BOnce()) {
+//            arm_value = 750;
+//            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+//        } else if (controller1.XOnce()) {
+//            arm_value = 250;
+//            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+//        } else if (controller1.AOnce()) {
+//            arm_value = 0;
+//            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+//        }
 
         if (controller1.leftBumper()) {
-            robot.arm.gripperReleasePos();
+            robot.lift.setDownPosition();
             gripper_released = true;
         } else if (controller1.rightBumper()) {
-            robot.arm.gripperInitialPos();
+            robot.lift.setUpPosition();
             gripper_released = false;
         }
 
-        if (controller1.dpadRightOnce()) {
-            if (closed == true) {
-                robot.gripper.openBarier();
-            } else {
-                robot.gripper.closeBarier();
-            }
-            closed = !closed;
-        }
-
-        if (controller1.dpadLeftOnce()) {
-            gheare = gheare + 1;
-            if (gheare % 3 == 0){
-                robot.gripper.leavePixels();
-            }else if (gheare % 3 == 1){
-                robot.gripper.defaultPickupPixelPos();
-            } else if (gheare % 3 == 2) {
-                robot.gripper.pickPixels();
-            }
-        }
-
-        // pana aici sa scrii cod
-        if(!Utils.isDone(lastArmMove) || !Utils.isDone(lastSliderMove)) {
+        if(!Utils.isDone(lastRightLift) || !Utils.isDone(lastLeftLift)) {
             return ;
         }
 
         // ------- controlling the arm positions -----
         else if (controller1.YOnce()) {
-            arm_value = 835;
-//            armIsUp = true;
-            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+            arm_value = 1500;
         } else if (controller1.BOnce()) {
             arm_value = 750;
-            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
         } else if (controller1.XOnce()) {
             arm_value = 250;
-            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
         } else if (controller1.AOnce()) {
             arm_value = 0;
-            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
         }
+        lastRightLift = robot.lift.liftUpLeft(arm_value, RAISE_POWER);
+        lastLeftLift = robot.lift.liftUpRight(arm_value, RAISE_POWER);
+
 
         // ------- controlling the slider positions -----
 //        else if (controller1.dpadUpOnce()) {
@@ -140,7 +163,7 @@ public class MainTeleOp extends OpMode {
 //            lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
 //        }
 
-        else if (controller1.dpadUpOnce()) {
+        if (controller1.dpadUpOnce()) {
             if (slider_level < 5) {
                 slider_level = slider_level + 1;
                 if (slider_level == 1) {
@@ -163,6 +186,9 @@ public class MainTeleOp extends OpMode {
         telemetry.addLine("---------------------");
         telemetry.addData("Arm target value", arm_value);
         telemetry.addData("Arm position", robot.arm.getCurrentPositionArm());
+        telemetry.addLine("---------------------");
+        telemetry.addData("Lift target value", arm_value);
+        telemetry.addData("lift position", robot.lift.getCurrentPositionArm());
 
         telemetry.update();
 

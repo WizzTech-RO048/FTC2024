@@ -21,8 +21,8 @@ public class Lift {
     private final DcMotorEx right_lift, left_lift;
 
     private final Servo lift_servo_right, lift_servo_left;
-    private final double LEFT_LIFT_DOWN = 1.0-0.2, RIGHT_LIFT_DOWN = 0.0+0.2;
-    private final double LEFT_LIFT_UP = 0.0+0.12, RIGHT_LIFT_UP = 1.0-0.12;
+    private final double LEFT_LIFT_DOWN = 1.0, RIGHT_LIFT_DOWN = 0.0;
+    private final double LEFT_LIFT_UP = 0.5, RIGHT_LIFT_UP = 0.5;
 
 
     Lift(@NonNull final Parameters parameters) {
@@ -36,7 +36,7 @@ public class Lift {
         right_lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         left_lift = hardwareMap.get(DcMotorEx.class, "scul_motor_left");
-        left_lift.setDirection(DcMotorSimple.Direction.FORWARD);
+        left_lift.setDirection(DcMotorSimple.Direction.REVERSE);
         left_lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         left_lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
@@ -87,16 +87,20 @@ public class Lift {
 
         return raiseArmLiftLeft;
     }
-//
-//    public void liftArmsUp() {
-//        lift_servo_left.setPosition(LEFT_LIFT_UP);
-//        lift_servo_right.setPosition(RIGHT_LIFT_UP);
-//    }
-//
-//    public void liftArmsDown() {
-//        lift_servo_left.setPosition(LEFT_LIFT_DOWN);
-//        lift_servo_right.setPosition(RIGHT_LIFT_DOWN);
-//    }
+
+    public void setUpPosition() {
+        lift_servo_left.setPosition(LEFT_LIFT_UP);
+        lift_servo_right.setPosition(RIGHT_LIFT_UP);
+    }
+
+    public void setDownPosition() {
+        lift_servo_left.setPosition(LEFT_LIFT_DOWN);
+        lift_servo_right.setPosition(RIGHT_LIFT_DOWN);
+    }
+
+    public int getCurrentPositionArm() {
+        return left_lift.getCurrentPosition();
+    }
 
     public static class Parameters {
         public HardwareMap hardwareMap;
