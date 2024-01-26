@@ -30,6 +30,8 @@ public class MainTeleOp extends OpMode {
     private ScheduledFuture<?> lastArmMove, lastSliderMove;
     private ScheduledFuture<?> lastRightLift, lastLeftLift;
 
+    // TODO: add timer
+
     @Override
     public void init() {
         robot = new Robot(
@@ -109,25 +111,25 @@ public class MainTeleOp extends OpMode {
 //        }
 
         // pana aici sa scrii cod
-//        if(!Utils.isDone(lastArmMove) || !Utils.isDone(lastSliderMove)) {
-//            return ;
-//        }
-//
-//        // ------- controlling the arm positions -----
-//        else if (controller1.YOnce()) {
-//            arm_value = 835;
-////            armIsUp = true;
-//            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
-//        } else if (controller1.BOnce()) {
-//            arm_value = 750;
-//            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
-//        } else if (controller1.XOnce()) {
-//            arm_value = 250;
-//            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
-//        } else if (controller1.AOnce()) {
-//            arm_value = 0;
-//            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
-//        }
+        if(!Utils.isDone(lastArmMove) || !Utils.isDone(lastSliderMove)) {
+            return ;
+        }
+
+        // ------- controlling the arm positions -----
+        else if (controller1.YOnce()) {
+            arm_value = 835;
+//            armIsUp = true;
+            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+        } else if (controller1.BOnce()) {
+            arm_value = 750;
+            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+        } else if (controller1.XOnce()) {
+            arm_value = 250;
+            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+        } else if (controller1.AOnce()) {
+            arm_value = 0;
+            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+        }
 
         if (controller1.leftBumper()) {
             robot.lift.setDownPosition();
@@ -137,19 +139,11 @@ public class MainTeleOp extends OpMode {
             gripper_released = false;
         }
 
+        // ------- controlling the lift -----
         if(!Utils.isDone(lastRightLift) || !Utils.isDone(lastLeftLift)) {
             return ;
-        }
-
-        // ------- controlling the arm positions -----
-        else if (controller1.YOnce()) {
-            arm_value = 1500;
-        } else if (controller1.BOnce()) {
-            arm_value = 750;
-        } else if (controller1.XOnce()) {
-            arm_value = 250;
-        } else if (controller1.AOnce()) {
-            arm_value = 0;
+        } else if (controller1.YOnce()) {
+            arm_value = 2000;
         }
         lastRightLift = robot.lift.liftUpLeft(arm_value, RAISE_POWER);
         lastLeftLift = robot.lift.liftUpRight(arm_value, RAISE_POWER);
