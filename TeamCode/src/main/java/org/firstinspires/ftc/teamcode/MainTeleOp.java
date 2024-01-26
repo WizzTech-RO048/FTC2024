@@ -119,24 +119,29 @@ public class MainTeleOp extends OpMode {
         if(!Utils.isDone(lastArmMove) || !Utils.isDone(lastSliderMove)) {
             return ;
         }
-
         else if (controller2.YOnce()) {
             arm_value = 835;
+            robot.arm.gripperSafety();
 //            armIsUp = true;
             lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
         } else if (controller2.BOnce()) {
             arm_value = 750;
+            robot.arm.gripperSafety();
             lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
         } else if (controller2.XOnce()) {
             arm_value = 250;
+            robot.arm.gripperSafety();
             lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
         } else if (controller2.AOnce()) {
             arm_value = 0;
+            robot.arm.gripperSafety();
             lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
         }
+        if(controller2.startButtonOnce())
+            robot.arm.gripperAfterArm();
 
         // --------- (BELE) intake iesire ---------
-        robot.gripper.rotateIntake(controller2.right_trigger);
+        robot.gripper.rotateIntake(-controller2.right_trigger);
 
         // ------- (BELE) basculare cutie intake -------
         if (controller2.dpadLeftOnce()) {
@@ -157,6 +162,7 @@ public class MainTeleOp extends OpMode {
             }
             closed = !closed;
         }
+
 
         // ------- (BELE) controlling the slider positions -----
         if (controller2.dpadUpOnce()) {

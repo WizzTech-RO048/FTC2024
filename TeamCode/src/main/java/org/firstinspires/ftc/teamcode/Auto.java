@@ -73,7 +73,6 @@ public class Auto extends LinearOpMode {
         } else if (detected_location == 3) {
             // scenariul right
         }
-
         while(opModeIsActive()) { sleep(20); }
     }
 
