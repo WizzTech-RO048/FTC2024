@@ -43,7 +43,7 @@ public class MainTeleOp extends OpMode {
 
         // --------- initializing the robot --------
 //        robot.gripper.release();
-        robot.gripper.defaultPickupPixelPos();
+       // robot.gripper.defaultPickupPixelPos();
 
         gheare = 1;
 
@@ -58,6 +58,7 @@ public class MainTeleOp extends OpMode {
         sculatoare = false;
         gripper_released = false;
         robot.lift.setDownPosition();
+        robot.arm.gripperInitialPos();
     }
 
     // ------ the emergency stop function ---------
@@ -78,27 +79,29 @@ public class MainTeleOp extends OpMode {
                 )
         );
 
-//        if (controller1.startButtonOnce()){
-//            robot.plane.releasePlane();
-//        }
-//
-//        if (controller1.leftBumper()) {
-//            robot.arm.gripperReleasePos();
-//            gripper_released = true;
-//        } else if (controller1.rightBumper()) {
-//            robot.arm.gripperInitialPos();
-//            gripper_released = false;
-//        }
-//
-//        if (controller1.dpadRightOnce()) {
-//            if (closed == true) {
-//                robot.gripper.openBarier();
-//            } else {
-//                robot.gripper.closeBarier();
-//            }
-//            closed = !closed;
-//        }
-//
+        if (controller1.startButtonOnce()){
+            robot.plane.releasePlane();
+        }
+
+        if (controller1.dpadLeftOnce())
+        {
+            if(gripper_released == true) {
+                robot.arm.gripperInitialPos();
+            }else {
+                robot.arm.gripperReleasePos();
+            }
+            gripper_released = !gripper_released;
+        }
+
+        if (controller1.dpadRightOnce()) {
+            if (closed == true) {
+                robot.gripper.openBarier();
+            } else {
+                robot.gripper.closeBarier();
+            }
+            closed = !closed;
+        }
+
 //        if (controller1.dpadLeftOnce()) {
 //            gheare = gheare + 1;
 //            if (gheare % 3 == 0){

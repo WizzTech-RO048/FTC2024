@@ -21,8 +21,8 @@ public class Arm {
     private final DcMotorEx arm;
     private final Servo gripper_rotation_left, gripper_rotation_right;
 
-    private final double LEFT_INITIAL_POS = 0.0, RIGHT_INITIAL_POS = 0.97;
-    private final double LEFT_RELEASE_POS = 0.97-0.45, RIGHT_RELEASE_POS = 0.0+0.45;
+    private final double LEFT_INITIAL_POS = 1.0, RIGHT_INITIAL_POS = 0.0;
+    private final double LEFT_RELEASE_POS = 0.35, RIGHT_RELEASE_POS = 0.65;
 
     Arm(@NonNull final Parameters parameters) {
         scheduler = Objects.requireNonNull(parameters.scheduler, "Scheduler was not set");

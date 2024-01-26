@@ -16,13 +16,13 @@ public class Gripper {
     private final double LEFT_RELEASE = 1.0-0.30, RIGHT_RELEASE = 0.3;
     private final double LEFT_DEFAULT = 0.5, RIGHT_DEFAULT = 0.5;
 
-    private final double OPEN_BARIER_POS = 0.3, CLOSE_BARIER_POS = 0.02;
+    private final double OPEN_BARIER_POS = 0.4, CLOSE_BARIER_POS = 0.55;
 
     private final Telemetry telemetry;
     private final HardwareMap hardwareMap;
 
 //    private final Servo left_gripper, right_gripper;
-    private final Servo gheara_right, gheara_left;
+   // private final Servo gheara_right, gheara_left;
     private final Servo barier;
 
     Gripper(@NonNull final Parameters parameters) {
@@ -32,25 +32,25 @@ public class Gripper {
 //        left_gripper = hardwareMap.get(Servo.class, "left_gripper");
 //        right_gripper = hardwareMap.get(Servo.class, "right_gripper");
 
-        gheara_left = hardwareMap.get(Servo.class, "gheara_left");
-        gheara_right = hardwareMap.get(Servo.class, "gheara_right");
+       // gheara_left = hardwareMap.get(Servo.class, "gheara_left");
+       // gheara_right = hardwareMap.get(Servo.class, "gheara_right");
         barier = hardwareMap.get(Servo.class, "barier");
     }
 
-    public void pickPixels() {
-        gheara_left.setPosition(LEFT_PICKUP);
-        gheara_right.setPosition(RIGHT_PICKUP);
-    }
-
-    public void leavePixels() {
-        gheara_left.setPosition(LEFT_RELEASE);
-        gheara_right.setPosition(RIGHT_RELEASE);
-    }
-
-    public void defaultPickupPixelPos() {
-        gheara_left.setPosition(LEFT_DEFAULT);
-        gheara_right.setPosition(RIGHT_DEFAULT);
-    }
+//    public void pickPixels() {
+//        gheara_left.setPosition(LEFT_PICKUP);
+//        gheara_right.setPosition(RIGHT_PICKUP);
+//    }
+//
+//    public void leavePixels() {
+//        gheara_left.setPosition(LEFT_RELEASE);
+//        gheara_right.setPosition(RIGHT_RELEASE);
+//    }
+//
+//    public void defaultPickupPixelPos() {
+//        gheara_left.setPosition(LEFT_DEFAULT);
+//        gheara_right.setPosition(RIGHT_DEFAULT);
+//    }
 
     public void closeBarier() {
         barier.setPosition(CLOSE_BARIER_POS);
