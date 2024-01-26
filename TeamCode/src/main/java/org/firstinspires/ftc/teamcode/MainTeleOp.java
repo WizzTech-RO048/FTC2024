@@ -18,7 +18,7 @@ import java.util.concurrent.ScheduledFuture;
 public class MainTeleOp extends OpMode {
 
     private Robot robot;
-    private Controller controller1;
+    private Controller controller1, controller2;
     private SampleMecanumDrive drive;
 
     private int raise_value, arm_value;
@@ -40,11 +40,7 @@ public class MainTeleOp extends OpMode {
                 Executors.newScheduledThreadPool(1)
         );
         controller1 = new Controller(gamepad1);
-
-        // --------- initializing the robot --------
-//        robot.gripper.release();
-       // robot.gripper.defaultPickupPixelPos();
-
+        controller2 = new Controller(gamepad2);
         gheare = 1;
 
         robot.plane.grabPlane();
@@ -58,7 +54,7 @@ public class MainTeleOp extends OpMode {
         sculatoare = false;
         gripper_released = false;
         robot.lift.setDownPosition();
-        robot.arm.gripperInitialPos();
+//        robot.arm.gripperInitialPos();
     }
 
     // ------ the emergency stop function ---------
@@ -67,10 +63,23 @@ public class MainTeleOp extends OpMode {
     @Override
     public void loop() {
         controller1.update();
+        controller2.update();
 
-        // -------- controlling the robot movement ------
-        // TOMICI: movement-ul ar trebui sa fie cel de roadrunner, nu am mai apucat sa il testez, dar ar trebui sa fie ok
-        // (eventual doar pozitiile din joystick sa fie negative / pozitive)
+
+        // controller 1
+        // - movement
+        // - avion
+        // - intake rotire - a primi
+        // - lift
+
+        // controller 2
+        // - rotire reverse intake
+        // - ridicare arm
+        // - control slider
+        // - cutie rotate
+        // - bariera
+
+        // --------- (BODO) movement general al robotului ---------
         drive.setWeightedDrivePower(
                 new Pose2d(
                         -controller1.left_stick_y, // gen astea negative / pozitive sau schimbate intre ele
@@ -79,61 +88,15 @@ public class MainTeleOp extends OpMode {
                 )
         );
 
+        // --------- (BODO) lansare avion ---------
         if (controller1.startButtonOnce()){
             robot.plane.releasePlane();
         }
 
-        if (controller1.dpadLeftOnce())
-        {
-            if(gripper_released == true) {
-                robot.arm.gripperInitialPos();
-            }else {
-                robot.arm.gripperReleasePos();
-            }
-            gripper_released = !gripper_released;
-        }
+        // --------- (BODO) intake primire ---------
+        robot.gripper.rotateIntake(controller1.right_trigger);
 
-        if (controller1.dpadRightOnce()) {
-            if (closed == true) {
-                robot.gripper.openBarier();
-            } else {
-                robot.gripper.closeBarier();
-            }
-            closed = !closed;
-        }
-
-//        if (controller1.dpadLeftOnce()) {
-//            gheare = gheare + 1;
-//            if (gheare % 3 == 0){
-//                robot.gripper.leavePixels();
-//            }else if (gheare % 3 == 1){
-//                robot.gripper.defaultPickupPixelPos();
-//            } else if (gheare % 3 == 2) {
-//                robot.gripper.pickPixels();
-//            }
-//        }
-
-        // pana aici sa scrii cod
-        if(!Utils.isDone(lastArmMove) || !Utils.isDone(lastSliderMove)) {
-            return ;
-        }
-
-        // ------- controlling the arm positions -----
-        else if (controller1.YOnce()) {
-            arm_value = 835;
-//            armIsUp = true;
-            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
-        } else if (controller1.BOnce()) {
-            arm_value = 750;
-            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
-        } else if (controller1.XOnce()) {
-            arm_value = 250;
-            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
-        } else if (controller1.AOnce()) {
-            arm_value = 0;
-            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
-        }
-
+        // --------- (BODO) control lift ---------
         if (controller1.leftBumper()) {
             robot.lift.setDownPosition();
             gripper_released = true;
@@ -142,7 +105,6 @@ public class MainTeleOp extends OpMode {
             gripper_released = false;
         }
 
-        // ------- controlling the lift -----
         if(!Utils.isDone(lastRightLift) || !Utils.isDone(lastLeftLift)) {
             return ;
         } else if (controller1.YOnce()) {
@@ -152,16 +114,52 @@ public class MainTeleOp extends OpMode {
         lastLeftLift = robot.lift.liftUpRight(arm_value, RAISE_POWER);
 
 
-        // ------- controlling the slider positions -----
-//        else if (controller1.dpadUpOnce()) {
-//            raise_value = 3000;
-//            lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
-//        } else if (controller1.dpadDownOnce()) {
-//            raise_value = 0;
-//            lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
-//        }
 
-        if (controller1.dpadUpOnce()) {
+        // ------- (BELE) controlling the arm positions -----
+        if(!Utils.isDone(lastArmMove) || !Utils.isDone(lastSliderMove)) {
+            return ;
+        }
+
+        else if (controller2.YOnce()) {
+            arm_value = 835;
+//            armIsUp = true;
+            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+        } else if (controller2.BOnce()) {
+            arm_value = 750;
+            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+        } else if (controller2.XOnce()) {
+            arm_value = 250;
+            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+        } else if (controller2.AOnce()) {
+            arm_value = 0;
+            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+        }
+
+        // --------- (BELE) intake iesire ---------
+        robot.gripper.rotateIntake(controller2.right_trigger);
+
+        // ------- (BELE) basculare cutie intake -------
+        if (controller2.dpadLeftOnce()) {
+            if(gripper_released == true) {
+                robot.arm.gripperInitialPos();
+            } else {
+                robot.arm.gripperReleasePos();
+            }
+            gripper_released = !gripper_released;
+        }
+
+        // ------- (BELE) controlare bariera -------
+        if (controller2.dpadRightOnce()) {
+            if (closed == true) {
+                robot.gripper.openBarier();
+            } else {
+                robot.gripper.closeBarier();
+            }
+            closed = !closed;
+        }
+
+        // ------- (BELE) controlling the slider positions -----
+        if (controller2.dpadUpOnce()) {
             if (slider_level < 5) {
                 slider_level = slider_level + 1;
                 if (slider_level == 1) {
@@ -170,13 +168,14 @@ public class MainTeleOp extends OpMode {
             }
             raise_value = 600 * slider_level;
             lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
-        } else if (controller1.dpadDownOnce() && gripper_released == false) {
+        } else if (controller2.dpadDownOnce() && gripper_released == false) {
             if (slider_level > 0) {
                 slider_level = slider_level - 1;
             }
             raise_value = 600 * slider_level;
             lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
         }
+
 
         // ------- printing the slider position -------
         telemetry.addData("Slider target value", raise_value);

@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.Robot;
 
 import androidx.annotation.NonNull;
+import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -16,7 +18,7 @@ public class Gripper {
     private final double LEFT_RELEASE = 1.0-0.30, RIGHT_RELEASE = 0.3;
     private final double LEFT_DEFAULT = 0.5, RIGHT_DEFAULT = 0.5;
 
-    private final double OPEN_BARIER_POS = 0.4, CLOSE_BARIER_POS = 0.55;
+    private final double OPEN_BARIER_POS = 0.52, CLOSE_BARIER_POS = 0.55;
 
     private final Telemetry telemetry;
     private final HardwareMap hardwareMap;
@@ -24,6 +26,7 @@ public class Gripper {
 //    private final Servo left_gripper, right_gripper;
    // private final Servo gheara_right, gheara_left;
     private final Servo barier;
+    private final CRServo intake;
 
     Gripper(@NonNull final Parameters parameters) {
         telemetry = Objects.requireNonNull(parameters.telemetry, "Telemetry object was not set");
@@ -35,6 +38,9 @@ public class Gripper {
        // gheara_left = hardwareMap.get(Servo.class, "gheara_left");
        // gheara_right = hardwareMap.get(Servo.class, "gheara_right");
         barier = hardwareMap.get(Servo.class, "barier");
+
+        intake = hardwareMap.get(CRServo.class, "crservo");
+        intake.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
 //    public void pickPixels() {
@@ -58,6 +64,10 @@ public class Gripper {
 
     public void openBarier() {
         barier.setPosition(OPEN_BARIER_POS);
+    }
+
+    public void rotateIntake(double speed) {
+        intake.setPower(speed);
     }
 
 //    public void grab() {
