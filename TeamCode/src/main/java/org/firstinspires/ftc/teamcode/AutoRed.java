@@ -5,6 +5,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import android.annotation.SuppressLint;
+import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -13,14 +14,21 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.ComputerVision.Pipelines.TeamPropDetectionPipeline;
+import org.firstinspires.ftc.teamcode.Robot.Robot;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
-@Autonomous(name="Autonomous FTC 2024")
-public class Auto extends LinearOpMode {
+import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
+import com.acmerobotics.roadrunner.geometry.Pose2d;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledFuture;
+
+@Autonomous(name="Autonomous Red FTC 2024")
+public class AutoRed extends LinearOpMode {
     OpenCvCamera camera;
     TeamPropDetectionPipeline teamPropDetectionPipeline;
 
@@ -38,7 +46,16 @@ public class Auto extends LinearOpMode {
     int detected_location;
 
     @Override
-    public void runOpMode() {
+    public void runOpMode() throws InterruptedException {
+        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+        Robot robot = new Robot(
+                hardwareMap,
+                telemetry,
+                Executors.newScheduledThreadPool(1)
+        );;
+
+        ScheduledFuture<?> lastArmMove, lastSliderMove;
+
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
         teamPropDetectionPipeline = new TeamPropDetectionPipeline();
@@ -62,17 +79,75 @@ public class Auto extends LinearOpMode {
             detected_location = teamPropDetectionPipeline.getLocation();
             telemetry.addData("TeamProp Location", detected_location);
 
+            lastArmMove = robot.arm.raiseArm(250, 1.0);
+
             telemetry.update();
             sleep(20);
         }
 
-        if (detected_location == 1) {
-            // scenariul left
-        } else if (detected_location == 2) {
-            // scenariul mid
-        } else if (detected_location == 3) {
-            // scenariul right
-        }
+        Trajectory forwardTrajectory = drive.trajectoryBuilder(new Pose2d())
+                    .strafeLeft(80)
+                    .build();
+
+
+        if(isStopRequested()) return;
+        drive.followTrajectory(forwardTrajectory);
+
+//        if (detected_location == 1) {
+//            // scenariul left
+//            Trajectory forwardTrajectory = drive.trajectoryBuilder(new Pose2d())
+//                    .forward(40)
+//                    .build();
+//
+//            Trajectory leftTrajectory = drive.trajectoryBuilder(forwardTrajectory.end())
+//                    .back(55)
+//                    .build();
+//
+//            Trajectory forward = drive.trajectoryBuilder(leftTrajectory.end())
+//                    .forward(10)
+//                    .build();
+//
+//            Trajectory parkTrajectory = drive.trajectoryBuilder(forward.end())
+//                    .strafeLeft(55)
+//                    .build();
+//
+//            if(isStopRequested()) return;
+//            drive.followTrajectory(forwardTrajectory);
+//            lastArmMove = robot.arm.raiseArm(250, 1.0);
+//            robot.gripper.rotateIntake(-0.5);
+//            drive.turn(1.9);
+//            drive.followTrajectory(leftTrajectory);
+//            lastArmMove = robot.arm.raiseArm(835, 1.0);
+////            lastSliderMove = robot.slider.raiseSlider(600, 1.0);
+//            robot.arm.gripperReleasePos();
+//            robot.gripper.openBarier();
+//            drive.followTrajectory(forward);
+//            drive.followTrajectory(parkTrajectory);
+////            lastSliderMove = robot.slider.raiseSlider(0, 1.0);
+//            robot.arm.gripperSafety();
+//            lastArmMove = robot.arm.raiseArm(250, 1.0);
+//            lastArmMove = robot.arm.raiseArm(0, 1.0);
+//
+//
+//        } else if (detected_location == 2) {
+//            // scenariul mid
+//            Trajectory forwardTrajectory = drive.trajectoryBuilder(new Pose2d())
+//                    .forward(5)
+//                    .build();
+//
+//            if(isStopRequested()) return;
+//            drive.followTrajectory(forwardTrajectory);
+//
+//        } else if (detected_location == 3) {
+//            // scenariul right
+//
+//            Trajectory forwardTrajectory = drive.trajectoryBuilder(new Pose2d())
+//                    .strafeRight(5)
+//                    .build();
+//
+//            if(isStopRequested()) return;
+//            drive.followTrajectory(forwardTrajectory);
+//        }
 
         while(opModeIsActive()) { sleep(20); }
     }

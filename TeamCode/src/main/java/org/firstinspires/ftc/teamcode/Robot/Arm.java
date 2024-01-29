@@ -21,6 +21,8 @@ public class Arm {
     private final DcMotorEx arm;
     private final Servo gripper_rotation_left, gripper_rotation_right;
 
+    private final double LEFT_SAFETY = 1.0-0.08, RIGHT_SAFETY = 0.0+0.08;
+    private final double LEFT_AFTERARM = 1.0-0.15, RIGHT_AFTERARM = 0.0+0.15;
     private final double LEFT_INITIAL_POS = 1.0-0.1, RIGHT_INITIAL_POS = 0.0+0.1;
     private final double LEFT_RELEASE_POS = 0.35, RIGHT_RELEASE_POS = 0.65;
 
@@ -75,6 +77,16 @@ public class Arm {
         gripper_rotation_left.setPosition(LEFT_RELEASE_POS);
         gripper_rotation_right.setPosition(RIGHT_RELEASE_POS);
     }
+
+    public void gripperSafety() {
+        gripper_rotation_left.setPosition(LEFT_SAFETY);
+        gripper_rotation_right.setPosition(RIGHT_SAFETY);
+    }
+    public void gripperAfterArm() {
+        gripper_rotation_left.setPosition(LEFT_AFTERARM);
+        gripper_rotation_right.setPosition(RIGHT_AFTERARM);
+    }
+
 
     public void stopArm() {
         // ----- stopping the slider moving -----

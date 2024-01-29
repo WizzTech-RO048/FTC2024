@@ -58,7 +58,6 @@ public class Robot {
 
     }
 
-
     public void getCurrentPos() {
         telemetry.addData("Slider position", slider.getCurrentPositionSlider());
         telemetry.update();
