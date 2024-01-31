@@ -1,4 +1,32 @@
+<<<<<<< HEAD
 #Fri Jan 26 23:30:18 EET 2024
+=======
+#Wed Jan 31 16:16:00 EET 2024
+base.0=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeLibDexDebug/10/classes.dex
+base.10=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/3/classes.dex
+base.11=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
+base.12=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
+base.13=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
+base.14=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeExtDexDebug/classes3.dex
+base.2=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeLibDexDebug/11/classes.dex
+base.3=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeLibDexDebug/8/classes.dex
+base.4=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.5=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/1/classes.dex
+base.6=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex
+base.7=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
+base.8=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
+base.9=/Users/bodo/Projects/wizz/FTC2024/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/15/classes.dex
+path.0=classes.dex
+path.1=10/classes.dex
+path.10=3/classes.dex
+path.11=5/classes.dex
+path.12=9/classes.dex
+path.13=classes2.dex
+path.14=classes3.dex
+path.2=11/classes.dex
+path.3=8/classes.dex
+>>>>>>> abf556a (road-runner)
 path.4=0/classes.dex
 path.3=8/classes.dex
 path.2=11/classes.dex

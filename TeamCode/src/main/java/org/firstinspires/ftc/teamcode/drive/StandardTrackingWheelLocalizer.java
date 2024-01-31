@@ -32,14 +32,14 @@ public class StandardTrackingWheelLocalizer extends ThreeTrackingWheelLocalizer 
     public static double WHEEL_RADIUS = 2; // in
     public static double GEAR_RATIO = 1; // output (wheel) speed / input (encoder) speed
 
-    public static double LATERAL_DISTANCE =12; //14; //11.2// in; distance between the left and right wheels
-    public static double FORWARD_OFFSET = -5.23;//5.2 // in; offset of the lateral wheel
+    public static double LATERAL_DISTANCE =11.2; //14; //11.2// in; distance between the left and right wheels
+    public static double FORWARD_OFFSET = -11.31;//5.2 // in; offset of the lateral wheel
 
     private Encoder leftEncoder, rightEncoder, frontEncoder;
 
     private List<Integer> lastEncPositions, lastEncVels;
     public static double X_MULTIPLIER = 0.381;
-    public static double Y_MULTIPLIER = 0.38;
+    public static double Y_MULTIPLIER = 1;
     public StandardTrackingWheelLocalizer(HardwareMap hardwareMap, List<Integer> lastTrackingEncPositions, List<Integer> lastTrackingEncVels) {
         super(Arrays.asList(
                 new Pose2d(0, LATERAL_DISTANCE / 2, 0), // left
