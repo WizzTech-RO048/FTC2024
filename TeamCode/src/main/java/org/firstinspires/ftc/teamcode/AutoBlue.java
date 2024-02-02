@@ -14,7 +14,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-import org.firstinspires.ftc.teamcode.ComputerVision.Pipelines.TeamPropDetectionPipeline;
+import org.firstinspires.ftc.teamcode.ComputerVision.Pipelines.TeamPropDetectionPipelineBlue;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.openftc.apriltag.AprilTagDetection;
@@ -28,7 +28,7 @@ import java.util.concurrent.ScheduledFuture;
 @Autonomous(name="Autonomous Blue FTC 2024")
 public class AutoBlue extends LinearOpMode {
     OpenCvCamera camera;
-    TeamPropDetectionPipeline teamPropDetectionPipeline;
+    TeamPropDetectionPipelineBlue teamPropDetectionPipeline;
 
     static final double FEET_PER_METER = 3.28084;
 
@@ -56,7 +56,7 @@ public class AutoBlue extends LinearOpMode {
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
-        teamPropDetectionPipeline = new TeamPropDetectionPipeline();
+        teamPropDetectionPipeline = new TeamPropDetectionPipelineBlue();
 
         camera.setPipeline(teamPropDetectionPipeline);
         camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
