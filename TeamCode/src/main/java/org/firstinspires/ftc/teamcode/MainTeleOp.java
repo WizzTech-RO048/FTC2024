@@ -23,7 +23,7 @@ public class MainTeleOp extends OpMode {
 
     private int raise_value, arm_value;
     public double RAISE_POWER = 1.0;
-    private boolean closed, gripper_released;
+    private boolean closed, gripper_released , armIsUp;
     private boolean sculatoare;
     private int last_arm_position; // 0 - a, 1 - x, 2 - b, 3 - y
     private int slider_level = 0;
@@ -110,7 +110,7 @@ public class MainTeleOp extends OpMode {
         if(!Utils.isDone(lastRightLift) || !Utils.isDone(lastLeftLift)) {
             return ;
         } else if (controller1.YOnce()) {
-            arm_value = 2500;
+            arm_value = 3000;
             lastRightLift = robot.lift.liftUpLeft(arm_value, RAISE_POWER);
             lastLeftLift = robot.lift.liftUpRight(arm_value, RAISE_POWER);
         }
@@ -130,7 +130,7 @@ public class MainTeleOp extends OpMode {
                 robot.gripper.closeBarier();
             }
 
-//            armIsUp = true;
+            armIsUp = true;
             lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
             last_arm_position = 3;
         } else if (controller2.BOnce()) {
@@ -141,6 +141,7 @@ public class MainTeleOp extends OpMode {
                 robot.gripper.closeBarier();
             }
 
+            armIsUp = false;
             robot.arm.gripperSafety();
             robot.gripper.closeBarier();
 
@@ -154,6 +155,7 @@ public class MainTeleOp extends OpMode {
                 robot.gripper.closeBarier();
             }
 
+            armIsUp = false;
             robot.arm.gripperSafety();
             robot.gripper.closeBarier();
 
@@ -168,6 +170,7 @@ public class MainTeleOp extends OpMode {
             robot.arm.gripperAfterArm();
             robot.gripper.openBarier();
         }
+
 
         // --------- (BELE) intake iesire ---------
 //        double rotation_speed2 = controller2.right_trigger - controller2.left_trigger;
@@ -192,23 +195,24 @@ public class MainTeleOp extends OpMode {
             }
             closed = !closed;
         }
-
         // ------- (BELE) controlling the slider positions -----
-        if (controller2.dpadUpOnce()) {
-            if (slider_level < 5) {
-                slider_level = slider_level + 1;
-                if (slider_level == 1) {
+        if (last_arm_position != 0) {
+            if (controller2.dpadUpOnce() && armIsUp == false) {
+                if (slider_level < 5) {
                     slider_level = slider_level + 1;
+                    if (slider_level == 1) {
+                        slider_level = slider_level + 1;
+                    }
                 }
+                raise_value = 600 * slider_level;
+                lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
+            } else if (controller2.dpadDownOnce() && gripper_released == false) {
+                if (slider_level > 0) {
+                    slider_level = slider_level - 1;
+                }
+                raise_value = 600 * slider_level;
+                lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
             }
-            raise_value = 600 * slider_level;
-            lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
-        } else if (controller2.dpadDownOnce() && gripper_released == false) {
-            if (slider_level > 0) {
-                slider_level = slider_level - 1;
-            }
-            raise_value = 600 * slider_level;
-            lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
         }
 
 

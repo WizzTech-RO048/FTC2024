@@ -17,6 +17,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.ComputerVision.Pipelines.TeamPropDetectionPipeline;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -40,6 +41,9 @@ public class AutoBlue extends LinearOpMode {
     double cy = 221.506;
 
     double tagsize = 0.166;
+    //ratio for optimized movement
+    public static double ratioStrafe = (60.0/24.0)*0.94;
+    public static double  ratioStraight = (60/48)*1.3;
 
     int detected_location;
 
@@ -77,7 +81,7 @@ public class AutoBlue extends LinearOpMode {
             detected_location = teamPropDetectionPipeline.getLocation();
             telemetry.addData("TeamProp Location", detected_location);
 
-            lastArmMove = robot.arm.raiseArm(250, 1.0);
+          //  lastArmMove = robot.arm.raiseArm(250, 1.0);
 
             telemetry.update();
             sleep(20);
@@ -85,9 +89,12 @@ public class AutoBlue extends LinearOpMode {
 
         if (detected_location == 1) {
             // scenariul left
-            Trajectory forwardTrajectory = drive.trajectoryBuilder(new Pose2d())
+            TrajectorySequence forwardTrajectory = drive.trajectorySequenceBuilder(new Pose2d())
                     .forward(40)
+                    .addTemporalMarker(() -> robot.gripper.closeBarier())
+                    .waitSeconds(2)
                     .build();
+
 
             Trajectory leftTrajectory = drive.trajectoryBuilder(forwardTrajectory.end())
                     .back(60)
@@ -102,7 +109,7 @@ public class AutoBlue extends LinearOpMode {
                     .build();
 
             if(isStopRequested()) return;
-            drive.followTrajectory(forwardTrajectory);
+            drive.followTrajectorySequence(forwardTrajectory);
             lastArmMove = robot.arm.raiseArm(250, 1.0);
             robot.gripper.rotateIntake(-0.5);
             drive.turn(-1.9);
@@ -121,38 +128,28 @@ public class AutoBlue extends LinearOpMode {
 
         } else if (detected_location == 2) {
             // scenariul mid
-            Trajectory forwardTrajectory = drive.trajectoryBuilder(new Pose2d())
-                    .forward(40)
+            TrajectorySequence forwardTrajectory = drive.trajectorySequenceBuilder(new Pose2d())
+                    .forward(OptimizedStraight(24))
+                    .addTemporalMarker(() -> robot.gripper.rotateIntake(-1))
+                    .waitSeconds(2)
                     .build();
 
             Trajectory leftTrajectory = drive.trajectoryBuilder(forwardTrajectory.end())
-                    .back(55)
+                    .strafeRight(OptimizedStrafe(24))
                     .build();
 
-            Trajectory forward = drive.trajectoryBuilder(leftTrajectory.end())
-                    .forward(10)
-                    .build();
+//            TrajectorySequence releaseTrajectory = drive.trajectorySequenceBuilder(leftTrajectory.end())
+//                    .back()
+//                    .
 
-            Trajectory parkTrajectory = drive.trajectoryBuilder(forward.end())
-                    .strafeRight(40)
-                    .build();
-
+//            Trajectory forward = drive.trajectoryBuilder(leftTrajectory.end())
+//                    .forward(10)
+//                    .build();
             if(isStopRequested()) return;
-            drive.followTrajectory(forwardTrajectory);
-            lastArmMove = robot.arm.raiseArm(250, 1.0);
-            robot.gripper.rotateIntake(-0.5);
-            drive.turn(-1.9);
-            drive.followTrajectory(leftTrajectory);
-            lastArmMove = robot.arm.raiseArm(835, 1.0);
-//            lastSliderMove = robot.slider.raiseSlider(600, 1.0);
-            robot.arm.gripperReleasePos();
-            robot.gripper.openBarier();
-            drive.followTrajectory(forward);
-            drive.followTrajectory(parkTrajectory);
-//            lastSliderMove = robot.slider.raiseSlider(0, 1.0);
-            lastArmMove = robot.arm.raiseArm(250, 1.0);
-            lastArmMove = robot.arm.raiseArm(0, 1.0);
 
+            drive.followTrajectorySequence(forwardTrajectory);
+            drive.followTrajectory(leftTrajectory);
+            drive.turn(Math.toRadians(100));
         } else if (detected_location == 3) {
             // scenariul right
 
@@ -206,4 +203,13 @@ public class AutoBlue extends LinearOpMode {
         telemetry.addLine(String.format("Rotation Roll: %.2f degrees", rot.thirdAngle));
     }
 
+    public static double OptimizedStrafe(double x)
+    {
+
+        return  x*ratioStrafe;
+    }
+    public static double OptimizedStraight(double x){
+
+        return x*ratioStraight;
+    }
 }
