@@ -1,5 +1,3 @@
-
-
 /**
  * Testing the implementation of the apriltag detection.
  * */
@@ -7,42 +5,34 @@
 package org.firstinspires.ftc.teamcode;
 
 import android.annotation.SuppressLint;
-<<<<<<< HEAD
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-=======
-import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
->>>>>>> 37e3892 (full autonomie)
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.ComputerVision.Pipelines.TeamPropDetectionPipeline;
-<<<<<<< HEAD
-=======
 import org.firstinspires.ftc.teamcode.Robot.Robot;
-import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
->>>>>>> 37e3892 (full autonomie)
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
-<<<<<<< HEAD
-@Autonomous(name="Autonomous FTC 2024")
-public class Auto extends LinearOpMode {
+import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
-=======
+import com.acmerobotics.roadrunner.geometry.Pose2d;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledFuture;
 
-@Autonomous(name="Autonomous Blue FTC 2024")
-public class AutoRed extends LinearOpMode {
->>>>>>> 37e3892 (full autonomie)
+import static org.firstinspires.ftc.teamcode.AutoRed.OptimizedStrafe;
+import static org.firstinspires.ftc.teamcode.AutoRed.OptimizedStraight;
+
+@Autonomous(name="Autonomous Red FTC 2024")
+public class AutoBlueBack extends LinearOpMode {
     OpenCvCamera camera;
     TeamPropDetectionPipeline teamPropDetectionPipeline;
 
@@ -56,14 +46,20 @@ public class AutoRed extends LinearOpMode {
     double cy = 221.506;
 
     double tagsize = 0.166;
-    //ratio for optimized movement
-    public static double ratioStrafe = (60.0/24.0)*0.94;
-    public static double  ratioStraight = (60/48)*1.3;
 
     int detected_location;
 
     @Override
-    public void runOpMode() {
+    public void runOpMode() throws InterruptedException {
+        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+        Robot robot = new Robot(
+                hardwareMap,
+                telemetry,
+                Executors.newScheduledThreadPool(1)
+        );;
+
+        ScheduledFuture<?> lastArmMove, lastSliderMove;
+
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
         teamPropDetectionPipeline = new TeamPropDetectionPipeline();
@@ -87,24 +83,13 @@ public class AutoRed extends LinearOpMode {
             detected_location = teamPropDetectionPipeline.getLocation();
             telemetry.addData("TeamProp Location", detected_location);
 
-<<<<<<< HEAD
-=======
-            //  lastArmMove = robot.arm.raiseArm(250, 1.0);
+            lastArmMove = robot.arm.raiseArm(250, 1.0);
 
->>>>>>> 37e3892 (full autonomie)
             telemetry.update();
             sleep(20);
         }
 
         if (detected_location == 1) {
-            // scenariul left
-<<<<<<< HEAD
-        } else if (detected_location == 2) {
-            // scenariul mid
-        } else if (detected_location == 3) {
-            // scenariul right
-        }
-=======
             TrajectorySequence forwardTrajectory = drive.trajectorySequenceBuilder(new Pose2d())
                     .forward(OptimizedStraight(24))
                     .turn(Math.toRadians(100))
@@ -114,44 +99,50 @@ public class AutoRed extends LinearOpMode {
                     .build();
 
             TrajectorySequence parkingTrajectory = drive.trajectorySequenceBuilder(forwardTrajectory.end())
-                    .back(OptimizedStraight(35))
+                    .strafeRight(24)
+                    .turn(Math.toRadians(180))
+                    .back(80)
+                    .strafeRight(15)
                     .addTemporalMarker(() -> robot.arm.raiseArm(835,1))
                     .waitSeconds(0.5)
                     .addTemporalMarker(() -> robot.arm.gripperReleasePos())
                     .waitSeconds(0.5)
                     .addTemporalMarker(() -> robot.gripper.openBarier())
                     .waitSeconds(0.5)
-                    .strafeLeft(OptimizedStrafe(20))
+                    .strafeLeft(OptimizedStrafe(10))
                     .addTemporalMarker(()->robot.arm.gripperInitialPos())
                     .waitSeconds(1)
-                    .addTemporalMarker(() -> robot.gripper.closeBarier())
                     .addTemporalMarker(() -> robot.arm.raiseArm(0,1))
+                    .addTemporalMarker(() -> robot.gripper.closeBarier())
                     .build();
 
             if(isStopRequested()) return;
 
             drive.followTrajectorySequence(forwardTrajectory);
+            drive.turn(Math.toRadians(-100));
             drive.followTrajectorySequence(parkingTrajectory);
-
 
         } else if (detected_location == 2) {
             // scenariul mid
             TrajectorySequence forwardTrajectory = drive.trajectorySequenceBuilder(new Pose2d())
-                    .forward(OptimizedStraight(24))
+                    .forward(OptimizedStraight(48))
+                    .turn(Math.toRadians(180))
                     .addTemporalMarker(() -> robot.gripper.rotateIntake(-1))
                     .waitSeconds(1)
                     .addTemporalMarker(() -> robot.gripper.rotateIntake(0))
                     .build();
 
             TrajectorySequence parkingTrajectory = drive.trajectorySequenceBuilder(forwardTrajectory.end())
-                    .back(OptimizedStraight(35))
+                    .turn(Math.toRadians(100))
+                    .back(80)
+                    .strafeRight(15)
                     .addTemporalMarker(() -> robot.arm.raiseArm(835,1))
                     .waitSeconds(0.5)
                     .addTemporalMarker(() -> robot.arm.gripperReleasePos())
                     .waitSeconds(0.5)
                     .addTemporalMarker(() -> robot.gripper.openBarier())
                     .waitSeconds(0.5)
-                    .strafeLeft(OptimizedStrafe(20))
+                    .strafeLeft(OptimizedStrafe(10))
                     .addTemporalMarker(()->robot.arm.gripperInitialPos())
                     .waitSeconds(1)
                     .addTemporalMarker(() -> robot.arm.raiseArm(0,1))
@@ -161,30 +152,31 @@ public class AutoRed extends LinearOpMode {
             if(isStopRequested()) return;
 
             drive.followTrajectorySequence(forwardTrajectory);
-            drive.turn(Math.toRadians(100));
             drive.followTrajectorySequence(parkingTrajectory);
 
 
         } else if (detected_location == 3) {
-            // scenariul right
-            TrajectorySequence purplepixel = drive.trajectorySequenceBuilder(new Pose2d())
-                    .strafeRight(OptimizedStrafe(24))
+
+            TrajectorySequence forwardTrajectory = drive.trajectorySequenceBuilder(new Pose2d())
                     .forward(OptimizedStraight(24))
-                    .turn(Math.toRadians(100))
+                    .turn(Math.toRadians(-100))
                     .addTemporalMarker(() -> robot.gripper.rotateIntake(-1))
                     .waitSeconds(1)
                     .addTemporalMarker(() -> robot.gripper.rotateIntake(0))
                     .build();
 
-            TrajectorySequence parkingTrajectory = drive.trajectorySequenceBuilder(purplepixel.end())
-                    .back(OptimizedStraight(10))
+            TrajectorySequence parkingTrajectory = drive.trajectorySequenceBuilder(forwardTrajectory.end())
+
+                    .strafeLeft(24)
+                    .back(80)
+                    .strafeRight(15)
                     .addTemporalMarker(() -> robot.arm.raiseArm(835,1))
                     .waitSeconds(0.5)
                     .addTemporalMarker(() -> robot.arm.gripperReleasePos())
                     .waitSeconds(0.5)
                     .addTemporalMarker(() -> robot.gripper.openBarier())
                     .waitSeconds(0.5)
-                    .strafeLeft(OptimizedStrafe(20))
+                    .strafeLeft(OptimizedStrafe(10))
                     .addTemporalMarker(()->robot.arm.gripperInitialPos())
                     .waitSeconds(1)
                     .addTemporalMarker(() -> robot.arm.raiseArm(0,1))
@@ -193,11 +185,11 @@ public class AutoRed extends LinearOpMode {
 
             if(isStopRequested()) return;
 
-            drive.followTrajectorySequence(purplepixel);
+            drive.followTrajectorySequence(forwardTrajectory);
+            drive.turn(Math.toRadians(-100));
             drive.followTrajectorySequence(parkingTrajectory);
         }
 
->>>>>>> 37e3892 (full autonomie)
         while(opModeIsActive()) { sleep(20); }
     }
 
@@ -214,14 +206,5 @@ public class AutoRed extends LinearOpMode {
         telemetry.addLine(String.format("Rotation Roll: %.2f degrees", rot.thirdAngle));
     }
 
-    public static double OptimizedStrafe(double x)
-    {
-
-        return  x*ratioStrafe;
-    }
-    public static double OptimizedStraight(double x){
-
-        return x*ratioStraight;
-    }
 }
 
