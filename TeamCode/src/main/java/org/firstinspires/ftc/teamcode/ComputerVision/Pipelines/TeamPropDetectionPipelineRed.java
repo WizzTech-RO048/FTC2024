@@ -4,16 +4,16 @@ import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
 
-public class TeamPropDetectionPipeline extends OpenCvPipeline {
+public class TeamPropDetectionPipelineRed extends OpenCvPipeline {
     private int location = 0;
 
     // -------- color ranges --------
     private Scalar lowerRed = new Scalar(0, 122, 141);
     private Scalar higherRed = new Scalar(255, 255, 255);
-    private Scalar lowerBlue = new Scalar(64, 103, 105);
-    private Scalar higherBlue = new Scalar(118, 255, 231);
 
-    // --------
+    // TODO: we need to create 2 different pipelines for
+
+    // -------- created new canvases --------
     private Mat hsvMat = new Mat();
     private Mat binaryMat = new Mat();
     private Mat maskedInputMat = new Mat();
@@ -23,8 +23,8 @@ public class TeamPropDetectionPipeline extends OpenCvPipeline {
     private static int HEIGHT = 480;
 
     // -------- coordinates for the limits of the LEFT, MID and RIGHT ROIs --------
-    private int line1 = WIDTH / 3 + 80;
-    private int line2 = WIDTH / 3 * 2 + 100;
+    private int line1 = WIDTH / 3 - 40;
+    private int line2 = WIDTH / 3 * 2 +100;
 
     @Override
     public Mat processFrame(Mat input) {
