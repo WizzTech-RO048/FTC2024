@@ -87,6 +87,7 @@ public class Arm {
         gripper_rotation_right.setPosition(RIGHT_AFTERARM);
     }
 
+
     public void stopArm() {
         // ----- stopping the slider moving -----
         arm.setPower(0.0);

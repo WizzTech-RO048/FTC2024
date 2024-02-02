@@ -18,11 +18,7 @@ public class Gripper {
     private final double LEFT_RELEASE = 1.0-0.30, RIGHT_RELEASE = 0.3;
     private final double LEFT_DEFAULT = 0.5, RIGHT_DEFAULT = 0.5;
 
-<<<<<<< HEAD
-    private final double OPEN_BARIER_POS = 0.50, CLOSE_BARIER_POS = 0.55;
-=======
     private final double OPEN_BARIER_POS = 0.48, CLOSE_BARIER_POS = 0.60;
->>>>>>> af994f3 (sper ca e autonomia buna)
 
     private final Telemetry telemetry;
     private final HardwareMap hardwareMap;
