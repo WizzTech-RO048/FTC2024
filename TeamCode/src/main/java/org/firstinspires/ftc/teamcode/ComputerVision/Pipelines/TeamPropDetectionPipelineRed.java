@@ -11,8 +11,6 @@ public class TeamPropDetectionPipelineRed extends OpenCvPipeline {
     private Scalar lowerRed = new Scalar(0, 122, 141);
     private Scalar higherRed = new Scalar(255, 255, 255);
 
-    // TODO: we need to create 2 different pipelines for
-
     // -------- created new canvases --------
     private Mat hsvMat = new Mat();
     private Mat binaryMat = new Mat();
