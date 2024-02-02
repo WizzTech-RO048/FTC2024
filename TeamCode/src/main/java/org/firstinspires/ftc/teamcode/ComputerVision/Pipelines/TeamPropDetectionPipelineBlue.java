@@ -4,12 +4,10 @@ import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
 
-public class TeamPropDetectionPipeline extends OpenCvPipeline {
+public class TeamPropDetectionPipelineBlue extends OpenCvPipeline {
     private int location = 0;
 
     // -------- color ranges --------
-    private Scalar lowerRed = new Scalar(0, 122, 141);
-    private Scalar higherRed = new Scalar(255, 255, 255);
     private Scalar lowerBlue = new Scalar(64, 103, 105);
     private Scalar higherBlue = new Scalar(118, 255, 231);
 
