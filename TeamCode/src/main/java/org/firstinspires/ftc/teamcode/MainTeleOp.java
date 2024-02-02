@@ -25,7 +25,7 @@ public class MainTeleOp extends OpMode {
     public double RAISE_POWER = 1.0;
     private boolean closed, gripper_released , armIsUp;
     private boolean sculatoare;
-    private int gheare = 0;
+    private int last_arm_position; // 0 - a, 1 - x, 2 - b, 3 - y
     private int slider_level = 0;
     private ScheduledFuture<?> lastArmMove, lastSliderMove;
     private ScheduledFuture<?> lastRightLift, lastLeftLift;
@@ -41,7 +41,6 @@ public class MainTeleOp extends OpMode {
         );
         controller1 = new Controller(gamepad1);
         controller2 = new Controller(gamepad2);
-        gheare = 1;
 
         robot.plane.grabPlane();
 
@@ -52,6 +51,7 @@ public class MainTeleOp extends OpMode {
         robot.gripper.openBarier();
         closed = false;
         sculatoare = false;
+        last_arm_position = 0;
         gripper_released = false;
         robot.lift.setDownPosition();
 //        robot.arm.gripperInitialPos();
@@ -90,12 +90,13 @@ public class MainTeleOp extends OpMode {
         );
 
         // --------- (BODO) lansare avion ---------
-        if (controller1.startButtonOnce()){
+        if (controller1.dpadUpOnce()){
             robot.plane.releasePlane();
         }
 
         // --------- (BODO) intake primire ---------
-        robot.gripper.rotateIntake(controller1.right_trigger);
+        double rotation_speed1 = controller1.right_trigger - controller1.left_trigger;
+        robot.gripper.rotateIntake(rotation_speed1);
 
         // --------- (BODO) control lift ---------
         if (controller1.leftBumper()) {
@@ -109,16 +110,10 @@ public class MainTeleOp extends OpMode {
         if(!Utils.isDone(lastRightLift) || !Utils.isDone(lastLeftLift)) {
             return ;
         } else if (controller1.YOnce()) {
-<<<<<<< HEAD
-            arm_value = 2000;
-=======
             arm_value = 3000;
             lastRightLift = robot.lift.liftUpLeft(arm_value, RAISE_POWER);
             lastLeftLift = robot.lift.liftUpRight(arm_value, RAISE_POWER);
->>>>>>> af994f3 (sper ca e autonomia buna)
         }
-        lastRightLift = robot.lift.liftUpLeft(arm_value, RAISE_POWER);
-        lastLeftLift = robot.lift.liftUpRight(arm_value, RAISE_POWER);
 
 
 
@@ -126,12 +121,9 @@ public class MainTeleOp extends OpMode {
         if(!Utils.isDone(lastArmMove) || !Utils.isDone(lastSliderMove)) {
             return ;
         }
+
         else if (controller2.YOnce()) {
             arm_value = 835;
-<<<<<<< HEAD
-            robot.arm.gripperSafety();
-//            armIsUp = true;
-=======
 
             if (last_arm_position == 0) {
                 robot.arm.gripperSafety();
@@ -139,12 +131,10 @@ public class MainTeleOp extends OpMode {
             }
 
             armIsUp = true;
->>>>>>> af994f3 (sper ca e autonomia buna)
             lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+            last_arm_position = 3;
         } else if (controller2.BOnce()) {
             arm_value = 750;
-<<<<<<< HEAD
-=======
 
             if (last_arm_position == 0) {
                 robot.arm.gripperSafety();
@@ -152,13 +142,13 @@ public class MainTeleOp extends OpMode {
             }
 
             armIsUp = false;
->>>>>>> af994f3 (sper ca e autonomia buna)
             robot.arm.gripperSafety();
+            robot.gripper.closeBarier();
+
             lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+            last_arm_position = 2;
         } else if (controller2.XOnce()) {
             arm_value = 250;
-<<<<<<< HEAD
-=======
 
             if (last_arm_position == 0) {
                 robot.arm.gripperSafety();
@@ -166,20 +156,25 @@ public class MainTeleOp extends OpMode {
             }
 
             armIsUp = false;
->>>>>>> af994f3 (sper ca e autonomia buna)
             robot.arm.gripperSafety();
+            robot.gripper.closeBarier();
+
             lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+            last_arm_position = 1;
         } else if (controller2.AOnce()) {
             arm_value = 0;
-            robot.arm.gripperSafety();
+
             lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
-        }
-        if(controller2.startButtonOnce())
+            last_arm_position = 0;
+
             robot.arm.gripperAfterArm();
+            robot.gripper.openBarier();
+        }
 
 
         // --------- (BELE) intake iesire ---------
-        robot.gripper.rotateIntake(-controller2.right_trigger);
+//        double rotation_speed2 = controller2.right_trigger - controller2.left_trigger;
+//        robot.gripper.rotateIntake(rotation_speed2);
 
         // ------- (BELE) basculare cutie intake -------
         if (controller2.dpadLeftOnce()) {
@@ -200,11 +195,6 @@ public class MainTeleOp extends OpMode {
             }
             closed = !closed;
         }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> af994f3 (sper ca e autonomia buna)
         // ------- (BELE) controlling the slider positions -----
         if (last_arm_position != 0) {
             if (controller2.dpadUpOnce() && armIsUp == false) {

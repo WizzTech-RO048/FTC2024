@@ -7,12 +7,8 @@
 package org.firstinspires.ftc.teamcode;
 
 import android.annotation.SuppressLint;
-<<<<<<< HEAD
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-=======
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
->>>>>>> 37e3892 (full autonomie)
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -20,35 +16,22 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-<<<<<<< HEAD
 import org.firstinspires.ftc.teamcode.ComputerVision.Pipelines.TeamPropDetectionPipeline;
-<<<<<<< HEAD
-=======
-=======
-import org.firstinspires.ftc.teamcode.ComputerVision.Pipelines.TeamPropDetectionPipelineRed;
->>>>>>> a08ee6d (Added different pipelines for different alliances)
 import org.firstinspires.ftc.teamcode.Robot.Robot;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
->>>>>>> 37e3892 (full autonomie)
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
-<<<<<<< HEAD
-@Autonomous(name="Autonomous FTC 2024")
-public class Auto extends LinearOpMode {
-
-=======
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledFuture;
 
 @Autonomous(name="Autonomous Blue FTC 2024")
 public class AutoRed extends LinearOpMode {
->>>>>>> 37e3892 (full autonomie)
     OpenCvCamera camera;
-    TeamPropDetectionPipelineRed teamPropDetectionPipeline;
+    TeamPropDetectionPipeline teamPropDetectionPipeline;
 
     static final double FEET_PER_METER = 3.28084;
 
@@ -67,10 +50,19 @@ public class AutoRed extends LinearOpMode {
     int detected_location;
 
     @Override
-    public void runOpMode() {
+    public void runOpMode() throws InterruptedException {
+        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+        Robot robot = new Robot(
+                hardwareMap,
+                telemetry,
+                Executors.newScheduledThreadPool(1)
+        );;
+
+        ScheduledFuture<?> lastArmMove, lastSliderMove;
+
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
-        teamPropDetectionPipeline = new TeamPropDetectionPipelineRed();
+        teamPropDetectionPipeline = new TeamPropDetectionPipeline();
 
         camera.setPipeline(teamPropDetectionPipeline);
         camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
@@ -91,24 +83,14 @@ public class AutoRed extends LinearOpMode {
             detected_location = teamPropDetectionPipeline.getLocation();
             telemetry.addData("TeamProp Location", detected_location);
 
-<<<<<<< HEAD
-=======
             //  lastArmMove = robot.arm.raiseArm(250, 1.0);
 
->>>>>>> 37e3892 (full autonomie)
             telemetry.update();
             sleep(20);
         }
 
         if (detected_location == 1) {
             // scenariul left
-<<<<<<< HEAD
-        } else if (detected_location == 2) {
-            // scenariul mid
-        } else if (detected_location == 3) {
-            // scenariul right
-        }
-=======
             TrajectorySequence forwardTrajectory = drive.trajectorySequenceBuilder(new Pose2d())
                     .forward(OptimizedStraight(24))
                     .turn(Math.toRadians(100))
@@ -201,7 +183,6 @@ public class AutoRed extends LinearOpMode {
             drive.followTrajectorySequence(parkingTrajectory);
         }
 
->>>>>>> 37e3892 (full autonomie)
         while(opModeIsActive()) { sleep(20); }
     }
 
