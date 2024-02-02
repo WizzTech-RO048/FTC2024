@@ -21,7 +21,7 @@ public class MainTeleOp extends OpMode {
     private Controller controller1, controller2;
     private SampleMecanumDrive drive;
 
-    private int raise_value, arm_value;
+    private  int raise_value, arm_value;
     public double RAISE_POWER = 1.0;
     private boolean closed, gripper_released , armIsUp;
     private boolean sculatoare;
