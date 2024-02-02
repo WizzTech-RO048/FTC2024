@@ -12,17 +12,17 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-import org.firstinspires.ftc.teamcode.ComputerVision.Pipelines.TeamPropDetectionPipeline;
+import org.firstinspires.ftc.teamcode.ComputerVision.Pipelines.TeamPropDetectionPipelineBlue;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
 @TeleOp
-public class TeamPropDetection extends LinearOpMode {
+public class TeamPropDetectionTEST extends LinearOpMode {
 
     OpenCvCamera camera;
-    TeamPropDetectionPipeline teamPropDetectionPipeline;
+    TeamPropDetectionPipelineBlue teamPropDetectionPipeline;
 
     static final double FEET_PER_METER = 3.28084;
 
@@ -41,7 +41,7 @@ public class TeamPropDetection extends LinearOpMode {
     public void runOpMode() {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
-        teamPropDetectionPipeline = new TeamPropDetectionPipeline();
+        teamPropDetectionPipeline = new TeamPropDetectionPipelineBlue();
 
         camera.setPipeline(teamPropDetectionPipeline);
         camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
@@ -64,14 +64,6 @@ public class TeamPropDetection extends LinearOpMode {
 
             telemetry.update();
             sleep(20);
-        }
-
-        if (detected_location == 1) {
-            // scenariul left
-        } else if (detected_location == 2) {
-            // scenariul mid
-        } else if (detected_location == 3) {
-            // scenariul right
         }
 
         while(opModeIsActive()) { sleep(20); }
