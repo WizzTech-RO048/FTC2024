@@ -3,7 +3,7 @@ import argparse
 
 camera = cv2.VideoCapture(1)
 camera.set(cv2.CAP_PROP_FRAME_WIDTH, 864)
-camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 448)
+camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-H", "--height", required=False, type=int, default=0, help="target height for reshape")
