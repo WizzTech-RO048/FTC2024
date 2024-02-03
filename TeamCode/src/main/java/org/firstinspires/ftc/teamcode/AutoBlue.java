@@ -31,7 +31,7 @@ import java.util.concurrent.ScheduledFuture;
 import static org.firstinspires.ftc.teamcode.AutoRed.OptimizedStrafe;
 import static org.firstinspires.ftc.teamcode.AutoRed.OptimizedStraight;
 
-@Autonomous(name="Autonomous Red FTC 2024")
+@Autonomous(name="Autonomous Blue FTC 2024")
 public class AutoBlue extends LinearOpMode {
     OpenCvCamera camera;
     TeamPropDetectionPipelineBlue teamPropDetectionPipeline;
@@ -83,8 +83,6 @@ public class AutoBlue extends LinearOpMode {
             detected_location = teamPropDetectionPipeline.getLocation();
             telemetry.addData("TeamProp Location", detected_location);
 
-            lastArmMove = robot.arm.raiseArm(250, 1.0);
-
             telemetry.update();
             sleep(20);
         }
@@ -92,27 +90,37 @@ public class AutoBlue extends LinearOpMode {
         if (detected_location == 1) {
             // scenariul left
             TrajectorySequence purplepixel = drive.trajectorySequenceBuilder(new Pose2d())
-                    .strafeLeft(OptimizedStrafe(24))
                     .forward(OptimizedStraight(24))
+                    .waitSeconds(2)
                     .turn(Math.toRadians(-100))
+                    .waitSeconds(2)
+                    .back(OptimizedStraight(24))
+                    .waitSeconds(4)
                     .addTemporalMarker(() -> robot.gripper.rotateIntake(-1))
-                    .waitSeconds(1)
+                    .waitSeconds(2)
                     .addTemporalMarker(() -> robot.gripper.rotateIntake(0))
                     .build();
 
             TrajectorySequence parkingTrajectory = drive.trajectorySequenceBuilder(purplepixel.end())
-                    .back(OptimizedStraight(10))
+                    .back(OptimizedStraight(20))
+                    .waitSeconds(2)
+                    .addTemporalMarker(() -> robot.gripper.rotateIntake(1))
                     .addTemporalMarker(() -> robot.arm.raiseArm(835,1))
-                    .waitSeconds(0.5)
+                    .waitSeconds(1)
+                    .addTemporalMarker(() -> robot.slider.raiseSlider(600,1))
+                    .waitSeconds(1)
                     .addTemporalMarker(() -> robot.arm.gripperReleasePos())
-                    .waitSeconds(0.5)
+                    .waitSeconds(1)
                     .addTemporalMarker(() -> robot.gripper.openBarier())
-                    .waitSeconds(0.5)
-                    .strafeLeft(OptimizedStrafe(20))
+                    .waitSeconds(1)
+                    .strafeRight(OptimizedStrafe(OptimizedStrafe(20)))
                     .addTemporalMarker(()->robot.arm.gripperInitialPos())
+                    .waitSeconds(1)
+                    .addTemporalMarker(() -> robot.slider.raiseSlider(0,1))
                     .waitSeconds(1)
                     .addTemporalMarker(() -> robot.arm.raiseArm(0,1))
                     .addTemporalMarker(() -> robot.gripper.closeBarier())
+                    .addTemporalMarker(() -> robot.slider.raiseSlider(0,1))
                     .build();
 
             if(isStopRequested()) return;

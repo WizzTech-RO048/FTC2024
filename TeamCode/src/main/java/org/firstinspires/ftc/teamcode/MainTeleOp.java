@@ -197,7 +197,7 @@ public class MainTeleOp extends OpMode {
         }
         // ------- (BELE) controlling the slider positions -----
         if (last_arm_position != 0) {
-            if (controller2.dpadUpOnce() && armIsUp == false) {
+            if (controller2.dpadUpOnce()) {
                 if (slider_level < 5) {
                     slider_level = slider_level + 1;
                     if (slider_level == 1) {
@@ -206,7 +206,7 @@ public class MainTeleOp extends OpMode {
                 }
                 raise_value = 600 * slider_level;
                 lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
-            } else if (controller2.dpadDownOnce() && gripper_released == false) {
+            } else if (controller2.dpadDownOnce()) {
                 if (slider_level > 0) {
                     slider_level = slider_level - 1;
                 }

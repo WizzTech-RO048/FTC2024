@@ -24,7 +24,7 @@ public class Arm {
     private final double LEFT_SAFETY = 1.0-0.08, RIGHT_SAFETY = 0.0+0.08;
     private final double LEFT_AFTERARM = 1.0-0.15, RIGHT_AFTERARM = 0.0+0.15;
     private final double LEFT_INITIAL_POS = 1.0-0.1, RIGHT_INITIAL_POS = 0.0+0.1;
-    private final double LEFT_RELEASE_POS = 0.35, RIGHT_RELEASE_POS = 0.65;
+    private final double LEFT_RELEASE_POS = 0.35-0.15, RIGHT_RELEASE_POS = 0.65+0.15;
 
     Arm(@NonNull final Parameters parameters) {
         scheduler = Objects.requireNonNull(parameters.scheduler, "Scheduler was not set");

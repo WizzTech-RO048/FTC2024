@@ -31,7 +31,7 @@ import java.util.concurrent.ScheduledFuture;
 import static org.firstinspires.ftc.teamcode.AutoRed.OptimizedStrafe;
 import static org.firstinspires.ftc.teamcode.AutoRed.OptimizedStraight;
 
-@Autonomous(name="Autonomous Red FTC 2024")
+@Autonomous(name="Autonomous Blue Back FTC 2024")
 public class AutoBlueBack extends LinearOpMode {
     OpenCvCamera camera;
     TeamPropDetectionPipelineBlue teamPropDetectionPipeline;

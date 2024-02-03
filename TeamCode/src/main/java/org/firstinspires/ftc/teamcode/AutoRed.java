@@ -28,7 +28,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledFuture;
 
-@Autonomous(name="Autonomous Blue FTC 2024")
+@Autonomous(name="Autonomous Red FTC 2024")
 public class AutoRed extends LinearOpMode {
     OpenCvCamera camera;
     TeamPropDetectionPipelineRed teamPropDetectionPipeline;
@@ -45,7 +45,7 @@ public class AutoRed extends LinearOpMode {
     double tagsize = 0.166;
     //ratio for optimized movement
     public static double ratioStrafe = (60.0/24.0)*0.94;
-    public static double  ratioStraight = (60/48)*1.3;
+    public static double  ratioStraight = (60/48)*1.6;
 
     int detected_location;
 
