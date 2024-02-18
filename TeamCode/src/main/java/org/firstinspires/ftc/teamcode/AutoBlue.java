@@ -31,7 +31,7 @@ import java.util.concurrent.ScheduledFuture;
 import static org.firstinspires.ftc.teamcode.AutoRed.OptimizedStrafe;
 import static org.firstinspires.ftc.teamcode.AutoRed.OptimizedStraight;
 
-@Autonomous(name="Autonomous Blue FTC 2024")
+@Autonomous(name="Autonomous Blue FTC 2024 (RUN LA ASTA)")
 public class AutoBlue extends LinearOpMode {
     OpenCvCamera camera;
     TeamPropDetectionPipelineBlue teamPropDetectionPipeline;
@@ -89,74 +89,79 @@ public class AutoBlue extends LinearOpMode {
 
         if (detected_location == 1) {
             // scenariul left
-            TrajectorySequence purplepixel = drive.trajectorySequenceBuilder(new Pose2d())
-                    .forward(OptimizedStraight(24))
-                    .waitSeconds(2)
-                    .turn(Math.toRadians(-100))
-                    .waitSeconds(2)
-                    .back(OptimizedStraight(24))
-                    .waitSeconds(4)
-                    .addTemporalMarker(() -> robot.gripper.rotateIntake(-1))
-                    .waitSeconds(2)
-                    .addTemporalMarker(() -> robot.gripper.rotateIntake(0))
+            TrajectorySequence forwardTrajectory = drive.trajectorySequenceBuilder(new Pose2d())
+                    .strafeRight(OptimizedStrafe(44))
+//                    .forward(OptimizedStraight(15))
+//                    .turn(Math.toRadians(-100))
+//                    .back(30)
+//                    .addTemporalMarker(() -> robot.gripper.rotateIntake(-1))
+//                    .waitSeconds(1)
+//                    .addTemporalMarker(() -> robot.gripper.rotateIntake(0))
                     .build();
 
-            TrajectorySequence parkingTrajectory = drive.trajectorySequenceBuilder(purplepixel.end())
-                    .back(OptimizedStraight(20))
-                    .waitSeconds(2)
-                    .addTemporalMarker(() -> robot.gripper.rotateIntake(1))
-                    .addTemporalMarker(() -> robot.arm.raiseArm(835,1))
-                    .waitSeconds(1)
-                    .addTemporalMarker(() -> robot.slider.raiseSlider(600,1))
-                    .waitSeconds(1)
-                    .addTemporalMarker(() -> robot.arm.gripperReleasePos())
-                    .waitSeconds(1)
-                    .addTemporalMarker(() -> robot.gripper.openBarier())
-                    .waitSeconds(1)
-                    .strafeRight(OptimizedStrafe(OptimizedStrafe(20)))
-                    .addTemporalMarker(()->robot.arm.gripperInitialPos())
-                    .waitSeconds(1)
-                    .addTemporalMarker(() -> robot.slider.raiseSlider(0,1))
-                    .waitSeconds(1)
-                    .addTemporalMarker(() -> robot.arm.raiseArm(0,1))
-                    .addTemporalMarker(() -> robot.gripper.closeBarier())
-                    .addTemporalMarker(() -> robot.slider.raiseSlider(0,1))
-                    .build();
-
+//            TrajectorySequence parkingTrajectory = drive.trajectorySequenceBuilder(forwardTrajectory.end())
+//                    .addTemporalMarker(() -> robot.gripper.rotateIntake(-1))
+//                    .waitSeconds(0.5)
+//                    .addTemporalMarker(() -> robot.arm.raiseArm(835,1))
+//                    .waitSeconds(2)
+//                    .addTemporalMarker(() -> robot.gripper.rotateIntake(0))
+//                    .waitSeconds(0.5)
+//                    .addTemporalMarker(() -> robot.slider.raiseSlider(1000,1))
+//                    .waitSeconds(2)
+//                    .addTemporalMarker(() -> robot.arm.gripperReleasePos())
+//                    .waitSeconds(1.5)
+//                    .addTemporalMarker(() -> robot.gripper.openBarier())
+//                    .waitSeconds(1.5)
+//                    .addTemporalMarker(()->robot.arm.gripperInitialPos())
+//                    .waitSeconds(2)
+//                    .addTemporalMarker(() -> robot.gripper.closeBarier())
+//                    .waitSeconds(1)
+//                    .addTemporalMarker(() -> robot.slider.raiseSlider(0,1))
+//                    .waitSeconds(2)
+//                    .addTemporalMarker(() -> robot.arm.raiseArm(0,1))
+//                    .waitSeconds(2)
+//                    .strafeRight(OptimizedStrafe(35))
+//                    .build();
+//
             if(isStopRequested()) return;
+//
+            drive.followTrajectorySequence(forwardTrajectory);
+//            drive.followTrajectorySequence(parkingTrajectory);
+            robot.gripper.rotateIntake(-1);
 
-            drive.followTrajectorySequence(purplepixel);
-            drive.followTrajectorySequence(parkingTrajectory);
 
         } else if (detected_location == 2) {
             // scenariul mid
             TrajectorySequence forwardTrajectory = drive.trajectorySequenceBuilder(new Pose2d())
-                    .forward(OptimizedStraight(24))
-                    .addTemporalMarker(() -> robot.gripper.rotateIntake(-1))
-                    .waitSeconds(1)
-                    .addTemporalMarker(() -> robot.gripper.rotateIntake(0))
+//                    .forward(OptimizedStraight(24))
+                    .strafeRight(OptimizedStrafe(44))
+
+//                    .addTemporalMarker(() -> robot.gripper.rotateIntake(-1))
+//                    .waitSeconds(1)
+//                    .addTemporalMarker(() -> robot.gripper.rotateIntake(0))
                     .build();
 
-            TrajectorySequence parkingTrajectory = drive.trajectorySequenceBuilder(forwardTrajectory.end())
-                    .back(OptimizedStraight(35))
-                    .addTemporalMarker(() -> robot.arm.raiseArm(835,1))
-                    .waitSeconds(0.5)
-                    .addTemporalMarker(() -> robot.arm.gripperReleasePos())
-                    .waitSeconds(0.5)
-                    .addTemporalMarker(() -> robot.gripper.openBarier())
-                    .waitSeconds(0.5)
-                    .strafeRight(OptimizedStrafe(20))
-                    .addTemporalMarker(()->robot.arm.gripperInitialPos())
-                    .waitSeconds(1)
-                    .addTemporalMarker(() -> robot.arm.raiseArm(0,1))
-                    .addTemporalMarker(() -> robot.gripper.closeBarier())
-                    .build();
-
+//            TrajectorySequence parkingTrajectory = drive.trajectorySequenceBuilder(forwardTrajectory.end())
+//                    .back(OptimizedStraight(35))
+//                    .addTemporalMarker(() -> robot.arm.raiseArm(835,1))
+//                    .waitSeconds(0.5)
+//                    .addTemporalMarker(() -> robot.arm.gripperReleasePos())
+//                    .waitSeconds(0.5)
+//                    .addTemporalMarker(() -> robot.gripper.openBarier())
+//                    .waitSeconds(0.5)
+//                    .strafeRight(OptimizedStrafe(20))
+//                    .addTemporalMarker(()->robot.arm.gripperInitialPos())
+//                    .waitSeconds(1)
+//                    .addTemporalMarker(() -> robot.arm.raiseArm(0,1))
+//                    .addTemporalMarker(() -> robot.gripper.closeBarier())
+//                    .build();
+//
             if(isStopRequested()) return;
-
+//
             drive.followTrajectorySequence(forwardTrajectory);
-            drive.turn(Math.toRadians(-100));
-            drive.followTrajectorySequence(parkingTrajectory);
+//            drive.turn(Math.toRadians(-100));
+//            drive.followTrajectorySequence(parkingTrajectory);
+            robot.gripper.rotateIntake(-1);
 
 
         } else if (detected_location == 3) {
@@ -164,32 +169,37 @@ public class AutoBlue extends LinearOpMode {
 
 
             TrajectorySequence forwardTrajectory = drive.trajectorySequenceBuilder(new Pose2d())
-                    .forward(OptimizedStraight(24))
-                    .turn(Math.toRadians(-100))
-                    .addTemporalMarker(() -> robot.gripper.rotateIntake(-1))
-                    .waitSeconds(1)
-                    .addTemporalMarker(() -> robot.gripper.rotateIntake(0))
+//                    .forward(OptimizedStraight(24)
+                    .strafeRight(OptimizedStrafe(44))
+
+//                    .turn(Math.toRadians(-100))
+//                    .addTemporalMarker(() -> robot.gripper.rotateIntake(-1))
+//                    .waitSeconds(1)
+//                    .addTemporalMarker(() -> robot.gripper.rotateIntake(0))
                     .build();
 
-            TrajectorySequence parkingTrajectory = drive.trajectorySequenceBuilder(forwardTrajectory.end())
-                    .back(OptimizedStraight(35))
-                    .addTemporalMarker(() -> robot.arm.raiseArm(835,1))
-                    .waitSeconds(0.5)
-                    .addTemporalMarker(() -> robot.arm.gripperReleasePos())
-                    .waitSeconds(0.5)
-                    .addTemporalMarker(() -> robot.gripper.openBarier())
-                    .waitSeconds(0.5)
-                    .strafeLeft(OptimizedStrafe(20))
-                    .addTemporalMarker(()->robot.arm.gripperInitialPos())
-                    .waitSeconds(1)
-                    .addTemporalMarker(() -> robot.gripper.closeBarier())
-                    .addTemporalMarker(() -> robot.arm.raiseArm(0,1))
-                    .build();
-
+//            TrajectorySequence parkingTrajectory = drive.trajectorySequenceBuilder(forwardTrajectory.end())
+//                    .back(OptimizedStraight(35))
+//                    .addTemporalMarker(() -> robot.arm.raiseArm(835,1))
+//                    .waitSeconds(0.5)
+//                    .addTemporalMarker(() -> robot.arm.gripperReleasePos())
+//                    .waitSeconds(0.5)
+//                    .addTemporalMarker(() -> robot.gripper.openBarier())
+//                    .waitSeconds(0.5)
+//                    .strafeLeft(OptimizedStrafe(20))
+//                    .addTemporalMarker(()->robot.arm.gripperInitialPos())
+//                    .waitSeconds(1)
+//                    .addTemporalMarker(() -> robot.gripper.closeBarier())
+//                    .addTemporalMarker(() -> robot.arm.raiseArm(0,1))
+//                    .build();
+//
             if(isStopRequested()) return;
-
+//
             drive.followTrajectorySequence(forwardTrajectory);
-            drive.followTrajectorySequence(parkingTrajectory);
+//            drive.followTrajectorySequence(parkingTrajectory);
+
+            robot.gripper.rotateIntake(-1);
+
 
         }
 

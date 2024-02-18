@@ -14,9 +14,8 @@ import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledFuture;
 
-@TeleOp(name="FTC2024")                                                                                                                                                                                                                                                             
+@TeleOp(name="FTC2024")
 public class MainTeleOp extends OpMode {
-
     private Robot robot;
     private Controller controller1, controller2;
     private SampleMecanumDrive drive;
@@ -29,8 +28,6 @@ public class MainTeleOp extends OpMode {
     private int slider_level = 0;
     private ScheduledFuture<?> lastArmMove, lastSliderMove;
     private ScheduledFuture<?> lastRightLift, lastLeftLift;
-
-    // TODO: add timer
 
     @Override
     public void init() {
@@ -47,15 +44,13 @@ public class MainTeleOp extends OpMode {
         drive = new SampleMecanumDrive(hardwareMap);
         drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-
-        robot.gripper.openBarier();
+//        robot.gripper.openBarier();
         closed = false;
         sculatoare = false;
         last_arm_position = 0;
         gripper_released = false;
+
         robot.lift.setDownPosition();
-//        robot.arm.gripperInitialPos();
-        robot.gripper.rotateIntake(-0.3);
     }
 
     // ------ the emergency stop function ---------
@@ -65,7 +60,6 @@ public class MainTeleOp extends OpMode {
     public void loop() {
         controller1.update();
         controller2.update();
-
 
         // controller 1
         // - movement
@@ -110,7 +104,7 @@ public class MainTeleOp extends OpMode {
         if(!Utils.isDone(lastRightLift) || !Utils.isDone(lastLeftLift)) {
             return ;
         } else if (controller1.YOnce()) {
-            arm_value = 3000;
+            arm_value = 3500;
             lastRightLift = robot.lift.liftUpLeft(arm_value, RAISE_POWER);
             lastLeftLift = robot.lift.liftUpRight(arm_value, RAISE_POWER);
         }
@@ -123,7 +117,7 @@ public class MainTeleOp extends OpMode {
         }
 
         else if (controller2.YOnce()) {
-            arm_value = 835;
+            arm_value = 850;
 
             if (last_arm_position == 0) {
                 robot.arm.gripperSafety();

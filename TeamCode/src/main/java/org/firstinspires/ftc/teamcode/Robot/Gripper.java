@@ -43,10 +43,9 @@ public class Gripper {
         intake.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
-//    public void pickPixels() {
-//        gheara_left.setPosition(LEFT_PICKUP);
-//        gheara_right.setPosition(RIGHT_PICKUP);
-//    }
+    public void stopIntakeServo() {
+        intake.close();
+    }
 //
 //    public void leavePixels() {
 //        gheara_left.setPosition(LEFT_RELEASE);

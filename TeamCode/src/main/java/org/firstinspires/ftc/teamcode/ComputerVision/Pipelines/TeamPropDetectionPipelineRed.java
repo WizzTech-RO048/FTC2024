@@ -21,7 +21,7 @@ public class TeamPropDetectionPipelineRed extends OpenCvPipeline {
     private static int HEIGHT = 480;
 
     // -------- coordinates for the limits of the LEFT, MID and RIGHT ROIs --------
-    private int line1 = WIDTH / 3 - 40;
+    private int line1 = WIDTH / 3 + 20;
     private int line2 = WIDTH / 3 * 2 +100;
 
     @Override
