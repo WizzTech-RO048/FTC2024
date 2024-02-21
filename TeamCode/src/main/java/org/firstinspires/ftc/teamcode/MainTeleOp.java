@@ -105,7 +105,7 @@ public class MainTeleOp extends OpMode {
         } else if (controller1.YOnce()) {
             arm_value = 2250;
             lastRightLift = robot.lift.liftUpLeft(arm_value, 0.5);
-            lastLeftLift = robot.lift.liftUpRight(arm_value, 0.5);
+            lastLeftLift = robot.lift.liftUpRight(arm_value, 0.7);
         }
 
 
