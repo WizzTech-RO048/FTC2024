@@ -39,18 +39,17 @@ public class MainTeleOp extends OpMode {
         controller1 = new Controller(gamepad1);
         controller2 = new Controller(gamepad2);
 
-        robot.plane.grabPlane();
-
         drive = new SampleMecanumDrive(hardwareMap);
         drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-//        robot.gripper.openBarier();
+        robot.plane.grabPlane();
+        robot.gripper.openBarier();
+        robot.lift.setDownPosition();
         closed = false;
         sculatoare = false;
         last_arm_position = 0;
         gripper_released = false;
 
-        robot.lift.setDownPosition();
     }
 
     // ------ the emergency stop function ---------
@@ -104,9 +103,9 @@ public class MainTeleOp extends OpMode {
         if(!Utils.isDone(lastRightLift) || !Utils.isDone(lastLeftLift)) {
             return ;
         } else if (controller1.YOnce()) {
-            arm_value = 3500;
-            lastRightLift = robot.lift.liftUpLeft(arm_value, RAISE_POWER);
-            lastLeftLift = robot.lift.liftUpRight(arm_value, RAISE_POWER);
+            arm_value = 2250;
+            lastRightLift = robot.lift.liftUpLeft(arm_value, 0.5);
+            lastLeftLift = robot.lift.liftUpRight(arm_value, 0.5);
         }
 
 
@@ -209,7 +208,6 @@ public class MainTeleOp extends OpMode {
             }
         }
 
-
         // ------- printing the slider position -------
         telemetry.addData("Slider target value", raise_value);
         telemetry.addData("Slider position", robot.slider.getCurrentPositionSlider());
@@ -221,10 +219,6 @@ public class MainTeleOp extends OpMode {
         telemetry.addData("lift position", robot.lift.getCurrentPositionArm());
 
         telemetry.update();
-
-        // ------- moving the slider -------
-
-        // ------- moving the arm -------
     }
 
 }
