@@ -43,7 +43,7 @@ public class MainTeleOp extends OpMode {
         drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         robot.plane.grabPlane();
-        robot.gripper.openBarier();
+        //robot.gripper.openBarier();
         robot.lift.setDownPosition();
         closed = false;
         sculatoare = false;
@@ -103,8 +103,8 @@ public class MainTeleOp extends OpMode {
         if(!Utils.isDone(lastRightLift) || !Utils.isDone(lastLeftLift)) {
             return ;
         } else if (controller1.YOnce()) {
-            arm_value = 2250;
-            lastRightLift = robot.lift.liftUpLeft(arm_value, 0.5);
+            arm_value = 3000;
+            lastRightLift = robot.lift.liftUpLeft(arm_value, 0.7);
             lastLeftLift = robot.lift.liftUpRight(arm_value, 0.7);
         }
 
