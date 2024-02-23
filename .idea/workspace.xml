@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cc18587-173c-42a4-814b-cef1176c3673" name="Changes" comment="Merged arad-league-meet branch">
+      <change afterPath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/MyOpmode2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" afterDir="false" />
@@ -17,9 +18,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FtcRobotController/build/.transforms/816d4400a7ff949731fb850cc3ee740e/transformed/debug/com/qualcomm/ftcrobotcontroller/BuildConfig.dex" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController/build/.transforms/816d4400a7ff949731fb850cc3ee740e/transformed/debug/com/qualcomm/ftcrobotcontroller/BuildConfig.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FtcRobotController/build/.transforms/816d4400a7ff949731fb850cc3ee740e/transformed/debug/org/firstinspires/ftc/robotcontroller/internal/FtcRobotControllerActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController/build/.transforms/816d4400a7ff949731fb850cc3ee740e/transformed/debug/org/firstinspires/ftc/robotcontroller/internal/FtcRobotControllerActivity.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FtcRobotController/build/.transforms/98504a9110cca9cfbcbff3854c4af4b9/transformed/debug/com/qualcomm/ftcrobotcontroller/BuildConfig.dex" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController/build/.transforms/98504a9110cca9cfbcbff3854c4af4b9/transformed/debug/com/qualcomm/ftcrobotcontroller/BuildConfig.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FtcRobotController/build/.transforms/98504a9110cca9cfbcbff3854c4af4b9/transformed/debug/org/firstinspires/ftc/robotcontroller/internal/FtcRobotControllerActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController/build/.transforms/98504a9110cca9cfbcbff3854c4af4b9/transformed/debug/org/firstinspires/ftc/robotcontroller/internal/FtcRobotControllerActivity.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FtcRobotController/build/generated/source/buildConfig/debug/com/qualcomm/ftcrobotcontroller/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController/build/generated/source/buildConfig/debug/com/qualcomm/ftcrobotcontroller/BuildConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/compile_library_classes_jar/debug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/compile_library_classes_jar/debug/classes.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/compiled_local_resources/debug/out/drawable-xhdpi-v4_icon_menu.png.flat" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/compiled_local_resources/debug/out/drawable-xhdpi-v4_icon_menu.png.flat" afterDir="false" />
@@ -43,98 +45,96 @@
       <change beforePath="$PROJECT_DIR$/FtcRobotController/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FtcRobotController/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/apk/debug/TeamCode-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/apk/debug/TeamCode-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/desugar_graph/debug/out/currentProject/jar_8251ea37881e96226b521f30f0c1aab915f6d2141c0c9c815fa142c47a16b35c_bucket_0/graph.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/desugar_graph/debug/out/currentProject/jar_8251ea37881e96226b521f30f0c1aab915f6d2141c0c9c815fa142c47a16b35c_bucket_1/graph.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/desugar_graph/debug/out/currentProject/jar_8251ea37881e96226b521f30f0c1aab915f6d2141c0c9c815fa142c47a16b35c_bucket_2/graph.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/desugar_graph/debug/out/currentProject/jar_8251ea37881e96226b521f30f0c1aab915f6d2141c0c9c815fa142c47a16b35c_bucket_3/graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/desugar_graph/debug/out/currentProject/jar_7b9cb0319818fa12639b4daa5bb9b81749afcafbd4f2ecb863c5e643726f6be4_bucket_0/graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/desugar_graph/debug/out/currentProject/jar_7b9cb0319818fa12639b4daa5bb9b81749afcafbd4f2ecb863c5e643726f6be4_bucket_1/graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/desugar_graph/debug/out/currentProject/jar_7b9cb0319818fa12639b4daa5bb9b81749afcafbd4f2ecb863c5e643726f6be4_bucket_2/graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/desugar_graph/debug/out/currentProject/jar_7b9cb0319818fa12639b4daa5bb9b81749afcafbd4f2ecb863c5e643726f6be4_bucket_3/graph.bin" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/dex/debug/mergeLibDexDebug/11/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/dex/debug/mergeLibDexDebug/11/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/dex/debug/mergeLibDexDebug/8/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/dex/debug/mergeLibDexDebug/8/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/15/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/15/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/dex_archive_input_jar_hashes/debug/out" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/dex_archive_input_jar_hashes/debug/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/dex_number_of_buckets_file/debug/out" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/dex_number_of_buckets_file/debug/out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/merge-state" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/+boQkr9Zh2gr2h7m4BwAYBtfRZA=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/034yzAme1ZoQC6vG3D53nUz4R+c=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/2sjhs54HjdZLM64DkVuDagD_K_Q=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/3TnbmfkpVhHYq_EeiUs3qUtTsmU=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/7CYdGp0gbzs9sHKH61AUBeVLjTY=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/7q2zjQicbIZAwdkoSYqfONZ08lo=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/9F7gjUmnCi9mZZ+5VWQwPgsmjMY=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/9RFiKewk1iauV11m5wkwDpnJ_mM=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/9VQfbkAhj8zyZvh1_w4bH9GrynY=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/BqO84lcIhDpTywAmMgtvcWt9RPU=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/CeBm5C+x3yYc8u4bF8JsaIerEik=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/CfUXP9KuBhv+hY4jYtGuwgfeZKI=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/DAKe1e1e7NEJH4W7sYoRovj4J18=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/Ezm_8xafcAF1E9p8M8pZxxlEI4Q=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/FOVG3GeQsCAWbsNNC3VpkSv0NbA=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/Fnytf1n6_JUFMJlNZk4ob96FJYM=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/Gxh9KOYpzNYGRZBYm_R8DIZXYx8=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/IJrH0A7ITHsrty5b78sNMydy1yY=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/KhCGGOzH2i9CT1cGwfVO6vl0Z_s=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/M3fYhAAzmMgemHO+7FClLQqapkI=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/METIHBSRGk0at5yPihpL9PhjC_E=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/Mo7zsyzz69+KYLLd8w_XP+45gAQ=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/NQA9P7d14SbkZ9or3j0BMlHTxM4=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/NU2vAC22XhupCC5gtUl9E4iXVfg=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/OedXazh_j8ymz+DgRHH6+OGK2+k=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/PNYbadPDCHSvvZNKZlxic6U+kqA=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/PSg42+4kPNO4mok8YBtUCQtQ6g0=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/PlVJ3vJXBW92lZMpBf3cBCH_OI4=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/QPSt6tNL7pyc1hLa7Me0WwNseoQ=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/QTxCGLMLHmnW8GC6eTq8M4wiFV0=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/ROa9lVtJLuYdRMUstYkMLCjeugk=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/RwgmYwfpqEO3Lo9hxCRUueP4bC4=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/SVMnqRrKm4h6ul56EVhefcLXISE=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/Sl67cLSRhkaEdtXl1GEzzjztwPw=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/Xpu_mWLIP5POPezRyGaS2s22jyY=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/Y0F0tkFc72bzPUJLesFYcVzQxSE=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/a0HSQ4AluAAeMODi+0zs8Ra9Drs=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/a8D1TuwwzoVqysiGNcqpct6yDbo=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/aHu12axDCo6j5dUyYk0drQwFpAY=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/csKdHjEsxABIIq4Uy3D5PkF7Gls=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/dPoEDC1cVgSOi8u8LtmRVs7oYYw=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/dknMNurwwZadsoL0MOUxI3ps0Cg=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/eVW7u_38xjdsS_u_ILRd8bQ9pVU=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/eqenm8JQXyrzb1HrwSftC73_fBg=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/fq3BIBmogu0+ZTK5TelONjPeZzg=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/gPqJrn07oCF+uOZzWMwiEjz53Q8=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/guICcA4cIZ6g6_2af1WvrlD28Do=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/h_4y0BQMGuVMkw3Ysqn1PGbUIcU=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/hkEPC3fb3vhrFLFuWbFTAtLAuYs=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/hkPQMzobFPh_LdCMiLd+qQFJXoU=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/i1AU+Sx0PE3bE3vGJugPIckMumk=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/kRHnJUKmiVAu8g0Iy931jIHw5SU=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/kWP6SqNDOv+T8S5xO7Fr_w+TxOI=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/l9ZBnNd9nwws1A9zn3DyT8rYT20=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/lsE04IsBHw6JhB1qunDqoBPek+E=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/mNCBLwloR3WF7_YwP3jxI7hvLj8=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/mlfqm9uQ7cdf4SFSg+5gMdq2qX0=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/mw4xNYnnaFEGQdts33KTa5At8h8=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/nNuVsv+DXG7FtPMZ_KIL43VhVdE=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/oIFibAaX_j7h4JdY1g6X1tm5ufY=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/p8knLECD88cetU8_uomBYDCQphw=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/qUdKHdCzmKaF9mE3Cp0boYM9EBU=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/qkP3mHbauSN2fdYELEZfW3ljtgk=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/qxtwUsqrcKn0aheIqL8YnMweDm8=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/tTD4z22uwrsq1d_xC+LiffeQfl4=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/vp99TIpVxgqWS+JmVlR5pAOTLyk=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/vwE_iMRBtH5dvCVLShjQBcdBYtg=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/wHveJbZRYsedHfz+nZnI_B52Lk0=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/wHzX8_gr6sXqMYNROeVP+AvQ8aM=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/wVlSxejNnAdcZkSmzLXsm_MHyy8=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/x2lSi3K2XYD+o2wFRMI15+AER4w=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/xE3EKRa3kz4zfx9zmoDMk8kuubc=" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/yZXX0mmCTAhlk9FE8gH7Mlzre58=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/0u_2ra0Tnr6ceEL12A1tacw5UbE=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/26AN2PdLcxxVSLpomvFVGA4ykoY=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/3_7vNp++LSTmzUKKEXM7NuC0MCU=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/58DDyXho5ZnMPIefNqeM_rGGeeI=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/5T28tzRylZq3hkM_xAQhikb_dMM=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/5nAcshvlO7kTgDUFaQO5qn44Scc=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/9BkfT8hX23IeSWgZ68FaeRdKHzM=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/9WxOepvdufv1Ud2m42qJDb3F6BI=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/9iyW+0tYdAvt6F3fBOv_3mxKXzQ=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/9vp3Z4XY5mBvhXAEoG2FYoEcIeU=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/AD0NIhm_0wXz2aMrF+sM9pJqQuo=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/B6BnxWq0Mv6Twy8C5_Ig5L3WULM=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/DAdzqdExLlOFuGRssehIHeJbY1U=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/FAhJWjS1DEqFR1PK2UC56dwIOxo=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/GU5lLxYY9kcOKYkBMxjZp_9YMEQ=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/HS_5TrPs157WUw1k4B9_B9ucMwY=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/I1re2in66wQVdpo7lJtrs_FTHR8=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/JVXzg+jAPVutaByXcnBO0Pa6b8E=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/K0GUI+OAKgtrUVHsCcVpDqxz_a0=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/KuT7GHLTtzE9d+nnyWqPBLW5VbU=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/Lv3QQgMfnwNlAbW2l1_mIH9_lug=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/MEW0YpWqiyfBjtteavWTl6jnMaA=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/MEwfPsO90QS1jVgctMEXfkQbO4w=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/NYLdOOmQGpvayIvJuou1MVJtZwM=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/PILYezGgzZex6nzRjNKtjlor02g=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/QMkQ4JYkRojDbf7blcSPkliKSTw=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/QUYfnzkzkGxSU4tR6rr4C27ZJgo=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/QfQe3aMzANI4KLgNne_C1uWv_Sw=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/R71pCIaT9maKNe79Oeolr1dqYek=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/RhVVRNSzaBjGBcwC+PPQhkgTepM=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/Rhba3hAyiGPFYTv2kwI9bZOSoV4=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/S6DMdOm1b0z13G+JQeJoYQXOIIs=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/TQVBmku2UgthPZUwSZQd4JOErJ0=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/TevXgDKsd+cJra+p_qA9VDdzy14=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/Z_yE2sly_OTI4DAXEDBofxY9Wcw=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/Zu9UiSQlnasJ9s1oPI5NMO7mL4s=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/_L8ouKqyLL36fs7NXccF5GKl9I8=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/_NpurCkojOmKf3gmctzL3V26K04=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/asNWKQ_7ketxpk4EO+8dymCJF_Q=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/bYn0huEl3tSKqhXfYbhQJVw8+nc=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/caI+5lQHXb+K8oQAgb4_qCwpit8=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/eJXf0BJMWHNP8iKPkLNoTnQgCiE=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/eSNUKr8IvUGRs+qpI7k8iK1ZzAU=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/eZ1LxYzcySeC5LVUlQ4x7S_+oGk=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/eZl0AUr9RxBgDgAgTW1UiK8qAwc=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/fmPd8ss_21wJY_V19R+aikgkEqw=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/g9Nehv+xxD81kLsrnmcJ9y3K9XA=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/gGQAVTHad7jbgOTyo2_+vL6lF7Y=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/gHS_GA05c+95EOutviFCcPINM+M=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/hA5ycU5PWlc2b6ZFge+jYh1keTY=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/ipcw8q3WM1acLfsRBa3f9RQtZi0=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/kCyZZ2lBcLsPUV7p+naHw91gHPY=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/l5bzhOsjMkLl78MtkXGBfflHuHg=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/myTTF2XmBaoxRTRv+h4DE5zdF8s=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/o+aEJqIDKiVgm_Osa7clBvD7qGk=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/okBKg799bZdSnmezMi2uOy5UMhU=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/orZPLuLGuCbcscCkjhHQA61TVak=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/p4deOY5wkvNimJdxLD_7Pa6igXo=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/pIdunA956VZuLz2jsra6jvMwqaw=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/qTOSjBdGI54NRJptnUm1kbEYev4=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/rvQZu0Y5OLCniDHCSEJIEfGVs_k=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/ryRGJb74g0zAXgJTWsc95AOblUI=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/sXXKS6UsnFezBVUPqJu19LPP44g=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/t6ixEVggP753W8uKxNSP83H3On0=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/uaxU+sB5Z9+bS4pJWCp9VHs_7jg=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/vHRJehBcRJXK+olRB+rRDQtIo1c=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/wERoKYQ3R9gHX6Z3Vja21y9BUvI=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/wSfP90HqmyOHE8FoZyrccPVLGmU=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/x+1HB7amgZdwrDRZXe4vswv41qs=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/xcCAwXntp0zcnq+306dKt_woGuY=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/xvpg_wMDT34d6GCbANlXKo4A0Aw=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/yof0obgkyMhJ2TLOImpe2NLD6ic=" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/zEfaPLHiQkYbIqId6oaSu+bLJMo=" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/debug/mergeDebugResources/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/javac/debug/classes/org/firstinspires/ftc/teamcode/MyOpmode.class" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/javac/debug/classes/org/firstinspires/ftc/teamcode/MyOpmode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/javac/debug/classes/org/firstinspires/ftc/teamcode/drive/DriveConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/javac/debug/classes/org/firstinspires/ftc/teamcode/drive/DriveConstants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/javac/debug/classes/org/firstinspires/ftc/teamcode/drive/SampleMecanumDrive.class" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/javac/debug/classes/org/firstinspires/ftc/teamcode/drive/SampleMecanumDrive.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/debug.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-af.json" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-af.json" afterDir="false" />
@@ -248,18 +248,15 @@
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-zh-rTW.json" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-zh-rTW.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-zu.json" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-zu.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values.json" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/org/firstinspires/ftc/teamcode/MyOpmode.dex" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/org/firstinspires/ftc/teamcode/MyOpmode.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/org/firstinspires/ftc/teamcode/drive/DriveConstants.dex" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/org/firstinspires/ftc/teamcode/drive/DriveConstants.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/org/firstinspires/ftc/teamcode/drive/SampleMecanumDrive.dex" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/org/firstinspires/ftc/teamcode/drive/SampleMecanumDrive.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/processed_res/debug/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/processed_res/debug/out/resources-debug.ap_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/b3c0b98925564d6bf36c13ea8185c002c0a1fba47351fa5ab4558d7c197ea766_0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/b3c0b98925564d6bf36c13ea8185c002c0a1fba47351fa5ab4558d7c197ea766_0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/b3c0b98925564d6bf36c13ea8185c002c0a1fba47351fa5ab4558d7c197ea766_1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/b3c0b98925564d6bf36c13ea8185c002c0a1fba47351fa5ab4558d7c197ea766_1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/b3c0b98925564d6bf36c13ea8185c002c0a1fba47351fa5ab4558d7c197ea766_2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/b3c0b98925564d6bf36c13ea8185c002c0a1fba47351fa5ab4558d7c197ea766_2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/b3c0b98925564d6bf36c13ea8185c002c0a1fba47351fa5ab4558d7c197ea766_3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/project_dex_archive/debug/out/b3c0b98925564d6bf36c13ea8185c002c0a1fba47351fa5ab4558d7c197ea766_3.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/source_set_path_map/debug/file-map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/source_set_path_map/debug/file-map.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamCode/build/intermediates/stable_resource_ids_file/debug/stableIds.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/intermediates/stable_resource_ids_file/debug/stableIds.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TeamCode/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/MyOpmode.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/MyOpmode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/PythonScripts/image1.png" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/PythonScripts/image1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/PythonScripts/image2.png" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/PythonScripts/image2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/PythonScripts/image3.png" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/PythonScripts/image3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/drive/DriveConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/drive/DriveConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/drive/SampleMecanumDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/drive/SampleMecanumDrive.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -270,7 +267,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/vladt/.android/avd/Pixel_XL_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[192.168.43.1:5555]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -336,7 +333,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Android App.TeamCode.executor": "Run",
+    "Android App.TeamCode.executor": "Debug",
     "DEBUGGABLE_DEVICE": "rev_robotics-control_hub_v1_0-192.168.43.1:5555",
     "DEBUGGABLE_PROCESS": "com.qualcomm.ftcrobotcontroller",
     "DEBUGGER_ID": "Auto",
@@ -546,5 +543,16 @@
     <MESSAGE value="Changed the location of the class." />
     <MESSAGE value="Merged arad-league-meet branch" />
     <option name="LAST_COMMIT_MESSAGE" value="Merged arad-league-meet branch" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/MainTeleOp.java</url>
+          <line>117</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
