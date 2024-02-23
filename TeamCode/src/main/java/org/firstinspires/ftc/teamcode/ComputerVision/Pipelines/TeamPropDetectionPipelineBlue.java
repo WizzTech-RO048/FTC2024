@@ -32,6 +32,7 @@ public class TeamPropDetectionPipelineBlue extends OpenCvPipeline {
         Core.inRange(hsvMat, lowerBlue, higherBlue, binaryMat);
 
         // -------- drawing lines for orientation --------
+        Imgproc.line(binaryMat, new Point(0, line), new Point(WIDTH, line), new Scalar(97, 97, 97), 5);
         Imgproc.line(binaryMat, new Point(line1, 0), new Point(line1, HEIGHT), new Scalar(97, 97, 97), 5);
         Imgproc.line(binaryMat, new Point(line2, 0), new Point(line2, HEIGHT), new Scalar(97, 97, 97), 5);
         Imgproc.line(binaryMat, new Point(0, line), new Point(WIDTH, line), new Scalar(97, 97, 97), 5);

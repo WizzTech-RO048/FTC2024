@@ -116,7 +116,7 @@ public class MainTeleOp extends OpMode {
         }
 
         else if (controller2.YOnce()) {
-            arm_value = 850;
+            arm_value = 910;
 
             if (last_arm_position == 0) {
                 robot.arm.gripperSafety();
