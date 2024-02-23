@@ -8,6 +8,7 @@ import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryAcceleration
 import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryVelocityConstraint;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.sun.tools.javac.util.MandatoryWarningHandler;
 import org.firstinspires.ftc.teamcode.Robot.Robot;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
@@ -69,15 +70,20 @@ public class MyOpmode extends LinearOpMode {
                 .lineToConstantHeading(new Vector2d(-4,40))
                 .build();
         TrajectorySequence Red_BackDrop_Left = drive.trajectorySequenceBuilder(new Pose2d())
-                .lineToConstantHeading(new Vector2d(-17,0))
-                .splineToLinearHeading(new Pose2d(-22,-6,Math.toRadians(75)),Math.toRadians(0))
-                .lineToConstantHeading(new Vector2d(-20,-4))
-                .splineToLinearHeading(new Pose2d(-26, 34, Math.toRadians(-90)), Math.toRadians(0))
+//                .lineToConstantHeading(new Vector2d(-20,4))
+//                .splineToLinearHeading(new Pose2d(-22,-6, Math.toRadians(60)),Math.toRadians(0))
+//                .forward(17)
+//                .splineToLinearHeading(new Pose2d(-26, 34, Math.toRadians(-90)), Math.toRadians(0))
+                .lineToConstantHeading(new Vector2d(-29,0))
+                .lineToConstantHeading(new Vector2d(-20,0))
+                .splineToLinearHeading(new Pose2d(-29,19,Math.toRadians(-90)),Math.toRadians(0))
+                .forward(17)
+                .back(12)
                 //adauga outtake
 
                 //parcare
-                .lineToConstantHeading(new Vector2d(-4,34))
-                .lineToConstantHeading(new Vector2d(-4,40))
+//                .lineToConstantHeading(new Vector2d(-4,34))
+//                .lineToConstantHeading(new Vector2d(-4,40))
                 .build();
 
         ///// ---------Audience-----------
@@ -93,35 +99,40 @@ public class MyOpmode extends LinearOpMode {
         TrajectorySequence Red_Audience_Right = drive.trajectorySequenceBuilder(new Pose2d())
                // .lineToConstantHeading(new Vector2d(-23,0))
                // .lineToConstantHeading(new Vector2d(-10,0))
-                .back(24)
-                .turn(Math.toRadians(-90), 2,2)
-                .lineToConstantHeading(new Vector2d(-23 , 6))
+                .back(27)
+                .turn(Math.toRadians(-90), 4,4)
+                .lineToConstantHeading(new Vector2d(-23 , 8))
                 .lineTo(new Vector2d(-30, -10))
-                .lineToConstantHeading(new Vector2d(-60 , 8))
-                .lineToConstantHeading(new Vector2d(-60 , 78))
-                .lineToConstantHeading(new Vector2d(-45 , 78))
+                .lineToConstantHeading(new Vector2d(-58 , 8))
+                .lineToConstantHeading(new Vector2d(-58 , 78))
+           //     .lineToConstantHeading(new Vector2d(-45 , 78))
+
 //                .splineToLinearHeading(new Pose2d(-23,-10,Math.toRadians(-90)),Math.toRadians(0))
 //                .lineToConstantHeading(new Vector2d(-23 , 18))
 //                .lineToConstantHeading(new Vector2d(-23,0))
 //                .strafeRight(18)
                 .build();
         TrajectorySequence Red_Audience_Middle = drive.trajectorySequenceBuilder(new Pose2d())
-                .lineToConstantHeading(new Vector2d(-29,0))
-                .lineToConstantHeading(new Vector2d(-15,0))
-                .lineToConstantHeading(new Vector2d(-15,-18))
-                .lineToLinearHeading(new Pose2d(-50,-18,Math.toRadians(-90)))
-                .back(90)
-                .lineToConstantHeading(new Vector2d(-40,72))
+//                .lineToConstantHeading(new Vector2d(-32,3))
+//                .lineToConstantHeading(new Vector2d(-15,0))
+//                .lineToConstantHeading(new Vector2d(-15,-14))
+                .lineToLinearHeading(new Pose2d(-34,0,Math.toRadians(-90)))
+                .forward(20)
+                .lineToLinearHeading(new Pose2d(-50,-20,Math.toRadians(-85)))
+                .lineToConstantHeading(new Vector2d(-58 , 50))
                 //aduauga outtake
                 .build();
         TrajectorySequence Red_Audience_Left =  drive.trajectorySequenceBuilder(new Pose2d())
-                .lineToConstantHeading(new Vector2d(-19,-9))//pixel on spike
-                .lineToConstantHeading(new Vector2d(-5,-9))
-                .lineToConstantHeading(new Vector2d(-5,-1.5))
-                .lineToConstantHeading(new Vector2d(-55,-2))
-                .lineToConstantHeading(new Vector2d(-55,1))
+//                .lineToConstantHeading(new Vector2d(-10 , -10))
+//                .lineToLinearHeading(new Pose2d(-30 , -4 , Math.toRadians(90)))
+//                .lineToLinearHeading(new Pose2d( -40 , 0 , Math.toRadians(90)))
+                .lineToConstantHeading(new Vector2d(-24,-9))//pixel on spike
+                .lineToConstantHeading(new Vector2d(-2,-9))
+                .lineToConstantHeading(new Vector2d(-5,-0))
+                .lineToConstantHeading(new Vector2d(-52,-1))
+                .lineToConstantHeading(new Vector2d(-52 ,1))
                 .strafeLeft(65)
-                .lineToLinearHeading(new Pose2d(-35,78,Math.toRadians(-90)))
+               // .lineToLinearHeading(new Pose2d(-35,78,Math.toRadians(-90)))
                 .build();
 
             TrajectorySequence parkingTrajectory = drive.trajectorySequenceBuilder(new Pose2d())
@@ -160,7 +171,7 @@ public class MyOpmode extends LinearOpMode {
         waitForStart();
 
         if(isStopRequested()) return;
-        drive.followTrajectorySequence(Red_Audience_Right);
+        drive.followTrajectorySequence(Red_BackDrop_Left);
         //drive.followTrajectorySequence(
     }
 }
