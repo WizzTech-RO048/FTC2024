@@ -116,7 +116,7 @@ public class MainTeleOp extends OpMode {
         }
 
         else if (controller2.YOnce()) {
-            arm_value = 850;
+            arm_value = 910;
 
             if (last_arm_position == 0) {
                 robot.arm.gripperSafety();
@@ -200,9 +200,7 @@ public class MainTeleOp extends OpMode {
                 raise_value = 600 * slider_level;
                 lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
             } else if (controller2.dpadDownOnce()) {
-                if (slider_level > 0) {
-                    slider_level = slider_level - 1;
-                }
+                slider_level = 0;
                 raise_value = 600 * slider_level;
                 lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
             }

@@ -21,8 +21,9 @@ public class TeamPropDetectionPipelineBlue extends OpenCvPipeline {
     private static int HEIGHT = 480;
 
     // -------- coordinates for the limits of the LEFT, MID and RIGHT ROIs --------
-    private int line1 = WIDTH / 3 + 30;
-    private int line2 = WIDTH / 3 * 2 + 80;
+    private int line1 = WIDTH / 3 - 80;
+    private int line2 = WIDTH / 3 * 2 - 20;
+    private int line = 250;
 
     @Override
     public Mat processFrame(Mat input) {
@@ -31,13 +32,14 @@ public class TeamPropDetectionPipelineBlue extends OpenCvPipeline {
         Core.inRange(hsvMat, lowerBlue, higherBlue, binaryMat);
 
         // -------- drawing lines for orientation --------
+        Imgproc.line(binaryMat, new Point(0, line), new Point(WIDTH, line), new Scalar(97, 97, 97), 5);
         Imgproc.line(binaryMat, new Point(line1, 0), new Point(line1, HEIGHT), new Scalar(97, 97, 97), 5);
         Imgproc.line(binaryMat, new Point(line2, 0), new Point(line2, HEIGHT), new Scalar(97, 97, 97), 5);
 
         // -------- creating for each ROI an image --------
-        Mat left_roi = binaryMat.submat(new Rect(0, 0, line1, HEIGHT));
-        Mat mid_roi = binaryMat.submat(new Rect(line1, 0, line2 - line1, HEIGHT));
-        Mat right_roi = binaryMat.submat(new Rect(line2, 0, WIDTH - line2, HEIGHT));
+        Mat left_roi = binaryMat.submat(new Rect(0, line, line1, HEIGHT-line));
+        Mat mid_roi = binaryMat.submat(new Rect(line1, line, line2 - line1, HEIGHT-line));
+        Mat right_roi = binaryMat.submat(new Rect(line2, line, WIDTH - line2, HEIGHT-line));
 
         // -------- calculating the number of white pixels in each region --------
         double w1 = Core.countNonZero(left_roi);
