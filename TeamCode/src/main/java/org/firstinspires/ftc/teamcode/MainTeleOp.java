@@ -103,9 +103,9 @@ public class MainTeleOp extends OpMode {
         if(!Utils.isDone(lastRightLift) || !Utils.isDone(lastLeftLift)) {
             return ;
         } else if (controller1.YOnce()) {
-            arm_value = 3000;
-            lastRightLift = robot.lift.liftUpLeft(arm_value, 0.7);
-            lastLeftLift = robot.lift.liftUpRight(arm_value, 0.7);
+            arm_value = 3500;
+            lastRightLift = robot.lift.liftUpLeft(arm_value, 1);
+            lastLeftLift = robot.lift.liftUpRight(arm_value, 1);
         }
 
 
@@ -124,7 +124,7 @@ public class MainTeleOp extends OpMode {
             }
 
             armIsUp = true;
-            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+            robot.arm.raiseArm(arm_value, RAISE_POWER);
             last_arm_position = 3;
         } else if (controller2.BOnce()) {
             arm_value = 750;
@@ -138,7 +138,7 @@ public class MainTeleOp extends OpMode {
             robot.arm.gripperSafety();
             robot.gripper.closeBarier();
 
-            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+            robot.arm.raiseArm(arm_value, RAISE_POWER);
             last_arm_position = 2;
         } else if (controller2.XOnce()) {
             arm_value = 250;
@@ -152,12 +152,12 @@ public class MainTeleOp extends OpMode {
             robot.arm.gripperSafety();
             robot.gripper.closeBarier();
 
-            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+            robot.arm.raiseArm(arm_value, RAISE_POWER);
             last_arm_position = 1;
         } else if (controller2.AOnce()) {
             arm_value = 0;
 
-            lastArmMove = robot.arm.raiseArm(arm_value, RAISE_POWER);
+            robot.arm.raiseArm(arm_value, RAISE_POWER);
             last_arm_position = 0;
 
             robot.arm.gripperAfterArm();
@@ -198,11 +198,11 @@ public class MainTeleOp extends OpMode {
                     }
                 }
                 raise_value = 600 * slider_level;
-                lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
+                robot.slider.raiseSlider(raise_value, RAISE_POWER);
             } else if (controller2.dpadDownOnce()) {
                 slider_level = 0;
                 raise_value = 600 * slider_level;
-                lastSliderMove = robot.slider.raiseSlider(raise_value, RAISE_POWER);
+                robot.slider.raiseSlider(raise_value, RAISE_POWER);
             }
         }
 
