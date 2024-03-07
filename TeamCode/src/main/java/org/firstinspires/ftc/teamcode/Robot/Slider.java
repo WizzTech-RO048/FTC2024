@@ -121,27 +121,18 @@ public class Slider {
 
     private ScheduledFuture<?> raiseSlider = null;
 
-    public ScheduledFuture<?> raiseSlider(int targetPositionValue, double raisePower) {
-        if (!Utils.isDone(raiseSlider) && !raiseSlider.cancel(true)) {
-            return null;
-        }
-
-//        int targetPosition = (int) Math.floor(Utils.interpolate(0, armRaisedPosition, positionPercentage, 1));
-        int initialPosition = slider.getCurrentPosition();
-
-        if (targetPositionValue == initialPosition) {
-            return null;
-        }
+    public void raiseSlider(int targetPositionValue, double raisePower) {
+        int currentPosition = getCurrentPositionSlider();
 
         slider.setTargetPosition(targetPositionValue);
         slider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        slider.setPower(targetPositionValue > initialPosition ? -raisePower : raisePower);
 
-        raiseSlider = Utils.poll(scheduler, () -> !slider.isBusy(), () -> slider.setPower(0), 10, TimeUnit.MILLISECONDS);
-
-        return raiseSlider;
+        if (currentPosition > targetPositionValue) {
+            slider.setPower(raisePower);
+        } else {
+            slider.setPower(-raisePower);
+        }
     }
-
 
     public int getCurrentPositionSlider() {
         return slider.getCurrentPosition();
