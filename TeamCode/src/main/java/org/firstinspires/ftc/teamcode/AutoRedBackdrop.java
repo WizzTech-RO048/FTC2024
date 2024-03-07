@@ -28,7 +28,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledFuture;
 
-@Autonomous(name="Autonomous Red FTC 2024")
+@Autonomous(name="Red Backdrop Auto")
 public class AutoRedBackdrop extends LinearOpMode {
     OpenCvCamera camera;
     TeamPropDetectionPipelineRed teamPropDetectionPipeline;
@@ -99,13 +99,13 @@ public class AutoRedBackdrop extends LinearOpMode {
                     .lineToConstantHeading(new Vector2d(-29,0))
                     .lineToConstantHeading(new Vector2d(-20,0))
                     .splineToLinearHeading(new Pose2d(-29,19,Math.toRadians(-90)),Math.toRadians(0))
-                    .forward(17)
+                    .forward(18.5)
                     .back(12)
+                    .turn(Math.toRadians(90))
                     //adauga outtake
-
                     //parcare
-                .lineToConstantHeading(new Vector2d(-4,34))
-                .lineToConstantHeading(new Vector2d(-4,40))
+                    .lineToConstantHeading(new Vector2d(-2,34))//parcare
+                    .lineToConstantHeading(new Vector2d(0,40))
                     .build();
 
             drive.followTrajectorySequence(Red_BackDrop_Left);
@@ -113,11 +113,11 @@ public class AutoRedBackdrop extends LinearOpMode {
         } else if (detected_location == 2) {
             // scenariul mid
             TrajectorySequence Red_BackDrop_Middle = drive.trajectorySequenceBuilder(new Pose2d())
-                    .lineToConstantHeading(new Vector2d(-29,0))
+                    .lineToConstantHeading(new Vector2d(-32,0))
                     .lineToConstantHeading(new Vector2d(-20,0))
-                    .splineToLinearHeading(new Pose2d(-26, 34, Math.toRadians(-90)), Math.toRadians(0))//adauga outtake
-                    .lineToConstantHeading(new Vector2d(-4,34))//parcare
-                    .lineToConstantHeading(new Vector2d(-4,40))
+                    .splineToLinearHeading(new Pose2d(-4, 34, Math.toRadians(90)), Math.toRadians(0))//adauga outtake
+                    .lineToConstantHeading(new Vector2d(-2,34))//parcare
+                    .lineToConstantHeading(new Vector2d(0,40))
                     .build();
 
             if(isStopRequested()) return;
@@ -127,11 +127,11 @@ public class AutoRedBackdrop extends LinearOpMode {
         } else if (detected_location == 3) {
             // scenariul right
             TrajectorySequence Red_BackDrop_Right = drive.trajectorySequenceBuilder(new Pose2d())//testata si merge
-                    .lineToConstantHeading(new Vector2d(-19,15.5))//pixel on spike
+                    .lineToConstantHeading(new Vector2d(-22,17))//pixel on spike
                     .lineToConstantHeading(new Vector2d(-5,15.5))
-                    .splineToLinearHeading(new Pose2d(-26, 34, Math.toRadians(-90)), Math.toRadians(0))//adauga outtake
-                    .lineToConstantHeading(new Vector2d(-4,34))//parcare
-                    .lineToConstantHeading(new Vector2d(-4,40))
+                    .splineToLinearHeading(new Pose2d(-26, 34, Math.toRadians(90)), Math.toRadians(0))//adauga outtake
+                    .lineToConstantHeading(new Vector2d(0,34))//parcare
+                    .lineToConstantHeading(new Vector2d(10,40))
                     .build();
 
             if(isStopRequested()) return;
@@ -140,6 +140,7 @@ public class AutoRedBackdrop extends LinearOpMode {
 
         }
 
+        robot.gripper.rotateIntake(1);
         while(opModeIsActive()) { sleep(20); }
     }
 

@@ -86,10 +86,23 @@ public class AutoBlueBackdrop extends LinearOpMode {
         if (detected_location == 1) {
             // scenariul left
             TrajectorySequence Blue_BackDrop_Left = drive.trajectorySequenceBuilder(new Pose2d())
-                    .lineToConstantHeading(new Vector2d(-24,-9))//pixel on spike
+                    .lineToConstantHeading(new Vector2d(-25,-9))//pixel on spike
+                    .addTemporalMarker(() -> { robot.arm.raiseArm(900, 1.0); })
                     .lineToConstantHeading(new Vector2d(-2,-9))
-                    .lineToLinearHeading(new Pose2d(-5,-36, Math.toRadians(-90)))
-                    .lineToConstantHeading(new Vector2d(-1,-41))
+                    .addTemporalMarker(() -> { robot.slider.raiseSlider(2700, 1.0);})
+                    .lineToLinearHeading(new Pose2d(-5,-36, Math.toRadians(95)))
+                    .lineToConstantHeading(new Vector2d(-15,-39))
+                    .lineToConstantHeading(new Vector2d(-15,-48))
+                    .addTemporalMarker(() -> { robot.arm.gripperReleasePos(); })
+                    .waitSeconds(2)
+                    .addTemporalMarker(() -> { robot.gripper.openBarier(); })
+                    .waitSeconds(1)
+                    .lineToConstantHeading(new Vector2d(-17,-36))
+                    .addTemporalMarker(() -> { robot.arm.gripperInitialPos(); })
+                    .waitSeconds(2)
+                    .addTemporalMarker(() -> { robot.slider.raiseSlider(0, 1.0);})
+                    .waitSeconds(3.5)
+                    .addTemporalMarker(() -> { robot.arm.raiseArm(0, 1.0);})
                     .build();
 
             if(isStopRequested()) return;
@@ -99,12 +112,23 @@ public class AutoBlueBackdrop extends LinearOpMode {
         } else if (detected_location == 2) {
             // scenariul mid
             TrajectorySequence Blue_BackDrop_Middle = drive.trajectorySequenceBuilder(new Pose2d())
-                    .lineToConstantHeading(new Vector2d(-32,0))
+                    .lineToConstantHeading(new Vector2d(-33,0))
+                    .addTemporalMarker(() -> { robot.arm.raiseArm(900, 1.0); })
                     .lineToConstantHeading(new Vector2d(-20,0))
-//                    .addTemporalMarker(()->{ robot.arm.raiseArm(900,1);})
-                    .lineToLinearHeading(new Pose2d(-15,-36, Math.toRadians(-90)))//adauga outtake
-//                    .addTemporalMarker(()->{ robot.slider.raiseSlider(1600,1);})
-                    .lineToConstantHeading(new Vector2d(-2,-41))
+                    .addTemporalMarker(() -> { robot.slider.raiseSlider(2700, 1.0);})
+                    .lineToLinearHeading(new Pose2d(-5,-36, Math.toRadians(95)))
+                    .lineToConstantHeading(new Vector2d(-19,-39))
+                    .lineToConstantHeading(new Vector2d(-19,-48.5))
+                    .addTemporalMarker(() -> { robot.arm.gripperReleasePos(); })
+                    .waitSeconds(2)
+                    .addTemporalMarker(() -> { robot.gripper.openBarier(); })
+                    .waitSeconds(1)
+                    .lineToConstantHeading(new Vector2d(-25,-36))
+                    .addTemporalMarker(() -> { robot.arm.gripperInitialPos(); })
+                    .waitSeconds(2)
+                    .addTemporalMarker(() -> { robot.slider.raiseSlider(0, 1.0);})
+                    .waitSeconds(3.5)
+                    .addTemporalMarker(() -> { robot.arm.raiseArm(0, 1.0);})
                     .build();
 
             if(isStopRequested()) return;
@@ -117,9 +141,24 @@ public class AutoBlueBackdrop extends LinearOpMode {
                     //.addTemporalMarker(()->robot.gripper.closeBarier())
                     .back(27)
                     .turn(Math.toRadians(-90), 4,4)
-                    .lineToConstantHeading(new Vector2d(-25 , 6.8))
-                    .forward(10)
-                    .lineToConstantHeading(new Vector2d(-2,-41))
+                    .lineToConstantHeading(new Vector2d(-25 , 7.2))
+                    .forward(18)
+                    .turn(Math.toRadians(190))
+                    .addTemporalMarker(() -> { robot.arm.raiseArm(900, 1.0); })
+                    .waitSeconds(3)
+                    .addTemporalMarker(() -> { robot.slider.raiseSlider(2700, 1.0);})
+                    .lineToConstantHeading(new Vector2d(-26,-39))
+                    .lineToConstantHeading(new Vector2d(-26,-48))
+                    .addTemporalMarker(() -> { robot.arm.gripperReleasePos(); })
+                    .waitSeconds(2)
+                    .addTemporalMarker(() -> { robot.gripper.openBarier(); })
+                    .waitSeconds(1)
+                    .lineToConstantHeading(new Vector2d(-25,-36))
+                    .addTemporalMarker(() -> { robot.arm.gripperInitialPos(); })
+                    .waitSeconds(2)
+                    .addTemporalMarker(() -> { robot.slider.raiseSlider(0, 1.0);})
+                    .waitSeconds(3.5)
+                    .addTemporalMarker(() -> { robot.arm.raiseArm(0, 1.0);})
                     .build();
 
 
@@ -128,8 +167,6 @@ public class AutoBlueBackdrop extends LinearOpMode {
             drive.followTrajectorySequence(Blue_BackDrop_Right);
 
         }
-
-        robot.gripper.rotateIntake(1.0);
 
         while(opModeIsActive()) { sleep(20); }
     }

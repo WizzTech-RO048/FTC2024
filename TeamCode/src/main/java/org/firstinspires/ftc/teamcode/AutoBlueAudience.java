@@ -90,10 +90,6 @@ public class AutoBlueAudience extends LinearOpMode {
                     .splineToLinearHeading(new Pose2d(-29,19,Math.toRadians(-90)),Math.toRadians(0))
                     .forward(21)
                     .back(12)
-                    .lineToConstantHeading(new Vector2d(-54.5,0))
-                    .lineToConstantHeading(new Vector2d(-52,-70))
-                    .lineToConstantHeading(new Vector2d(-50,-75))
-                    .lineToConstantHeading(new Vector2d(-39,-84))
                     .build();
 
             if(isStopRequested()) return;
@@ -105,9 +101,6 @@ public class AutoBlueAudience extends LinearOpMode {
                     .back(32)
                     .forward(10)
                     .strafeLeft(15)
-                    .lineToConstantHeading(new Vector2d(-53,10))
-                    .lineToConstantHeading(new Vector2d(-50,-75))
-                    .lineToConstantHeading(new Vector2d(-39,-84))
                     .build();
 
             if(isStopRequested()) return;
@@ -120,10 +113,6 @@ public class AutoBlueAudience extends LinearOpMode {
                     .lineToConstantHeading(new Vector2d(-2,20))
                     .lineToConstantHeading(new Vector2d(-5,1))
                     .turn(-Math.toRadians(10))
-                    .lineToConstantHeading(new Vector2d(-53,2))
-                    .strafeRight(65)
-                    .lineToConstantHeading(new Vector2d(-50,-75))
-                    .lineToConstantHeading(new Vector2d(-39,-84))
                     .build();
             if(isStopRequested()) return;
             drive.followTrajectorySequence(Blue_Audience_Right);

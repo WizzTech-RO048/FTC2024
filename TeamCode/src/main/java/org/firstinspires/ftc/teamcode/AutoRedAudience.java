@@ -27,7 +27,7 @@ import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledFuture;
 
-@Autonomous(name="Red Backdrop Auto")
+@Autonomous(name="Red Audience Auto")
 public class AutoRedAudience extends LinearOpMode {
     OpenCvCamera camera;
     TeamPropDetectionPipelineRed teamPropDetectionPipeline;
@@ -86,16 +86,9 @@ public class AutoRedAudience extends LinearOpMode {
         if (detected_location == 1) {
             // scenariul left
             TrajectorySequence Red_Audience_Left =  drive.trajectorySequenceBuilder(new Pose2d())
-//                .lineToConstantHeading(new Vector2d(-10 , -10))
-//                .lineToLinearHeading(new Pose2d(-30 , -4 , Math.toRadians(90)))
-//                .lineToLinearHeading(new Pose2d( -40 , 0 , Math.toRadians(90)))
                     .lineToConstantHeading(new Vector2d(-24,-9))//pixel on spike
                     .lineToConstantHeading(new Vector2d(-2,-9))
                     .lineToConstantHeading(new Vector2d(-5,-0))
-                    .lineToConstantHeading(new Vector2d(-52,-1))
-                    .lineToConstantHeading(new Vector2d(-52 ,1))
-                    .strafeLeft(65)
-                    // .lineToLinearHeading(new Pose2d(-35,78,Math.toRadians(-90)))
                     .build();
 
             if(isStopRequested()) return;
@@ -105,13 +98,8 @@ public class AutoRedAudience extends LinearOpMode {
         } else if (detected_location == 2) {
             // scenariul mid
             TrajectorySequence Red_Audience_Middle = drive.trajectorySequenceBuilder(new Pose2d())
-//                .lineToConstantHeading(new Vector2d(-32,3))
-//                .lineToConstantHeading(new Vector2d(-15,0))
-//                .lineToConstantHeading(new Vector2d(-15,-14))
                     .lineToLinearHeading(new Pose2d(-34,0,Math.toRadians(-90)))
                     .forward(20)
-                    .lineToLinearHeading(new Pose2d(-50,-20,Math.toRadians(-85)))
-                    .lineToConstantHeading(new Vector2d(-58 , 50))
                     //aduauga outtake
                     .build();
 
@@ -128,14 +116,7 @@ public class AutoRedAudience extends LinearOpMode {
                     .turn(Math.toRadians(-90), 4,4)
                     .lineToConstantHeading(new Vector2d(-23 , 8))
                     .lineTo(new Vector2d(-30, -10))
-                    .lineToConstantHeading(new Vector2d(-58 , 8))
-                    .lineToConstantHeading(new Vector2d(-58 , 78))
-                    //     .lineToConstantHeading(new Vector2d(-45 , 78))
-
-//                .splineToLinearHeading(new Pose2d(-23,-10,Math.toRadians(-90)),Math.toRadians(0))
-//                .lineToConstantHeading(new Vector2d(-23 , 18))
-//                .lineToConstantHeading(new Vector2d(-23,0))
-//                .strafeRight(18)
+                    .lineToConstantHeading(new Vector2d(-40 , 8))
                     .build();
 
             if(isStopRequested()) return;
