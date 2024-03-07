@@ -91,9 +91,9 @@ public class MyOpmode2 extends LinearOpMode {
         TrajectorySequence Blue_BackDrop_Middle = drive.trajectorySequenceBuilder(new Pose2d())
                 .lineToConstantHeading(new Vector2d(-30,0))
                 .lineToConstantHeading(new Vector2d(-20,0))
-                .addTemporalMarker(()->{ lastArmRaise = robot.arm.raiseArm(900,1);})
+                .addTemporalMarker(()->{ robot.arm.raiseArm(900,1);})
                 .lineToLinearHeading(new Pose2d(-15,-36, Math.toRadians(90)))//adauga outtake
-                .addTemporalMarker(()->{ lastSliderRaise = robot.slider.raiseSlider(1600,1);})
+                .addTemporalMarker(()->{ robot.slider.raiseSlider(1600,1);})
                 .lineToConstantHeading(new Vector2d(-20,-37))
                 .lineToConstantHeading(new Vector2d(-20,-41))
 
