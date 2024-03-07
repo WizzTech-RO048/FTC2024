@@ -42,27 +42,18 @@ public class Arm {
 
     private ScheduledFuture<?> raiseArm = null;
 
-    public ScheduledFuture<?> raiseArm(int targetPositionValue, double raisePower) {
-        if (!Utils.isDone(raiseArm) && !raiseArm.cancel(true)) {
-            return null;
-        }
-
-//        int targetPosition = (int) Math.floor(Utils.interpolate(0, armRaisedPosition, positionPercentage, 1));
-        int initialPosition = arm.getCurrentPosition();
-
-        if (targetPositionValue == initialPosition) {
-            return null;
-        }
+    public void raiseArm(int targetPositionValue, double raisePower) {
+        int currentPosition = getCurrentPositionArm();
 
         arm.setTargetPosition(targetPositionValue);
         arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        arm.setPower(targetPositionValue > initialPosition ? raisePower : -raisePower);
 
-        raiseArm = Utils.poll(scheduler, () -> !arm.isBusy(), () -> arm.setPower(0), 10, TimeUnit.MILLISECONDS);
-
-        return raiseArm;
+        if (currentPosition < targetPositionValue) {
+            arm.setPower(raisePower);
+        } else{
+            arm.setPower(-raisePower);
+        }
     }
-
 
     public int getCurrentPositionArm() {
         return arm.getCurrentPosition();
