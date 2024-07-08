@@ -19,7 +19,7 @@ Welcome to the official repository of **WizzTech #19094 Robotics Team** for the 
 # Team Notebook
 All the details regarding our activity can be found in the team notebook. 
 
-You can take a look at ours team notebook for this season right here: [WizzTech's Team Notebook](https://drive.google.com)
+You can take a look at ours team notebook for this season right here: [WizzTech's Team Notebook](https://drive.google.com/file/d/1dHoYdEmT_0_Q6Z_s5RLlCmxhCNO6oM1o/view?usp=sharing)
 
 # The Programming team
 Our programming team is compromised of dedicated students who bring a variety of skills and knowledge to the table. 
@@ -38,6 +38,6 @@ We would like to extend our deepest gratitude to our sponsors and partners, whos
 
 # Contact
 
-<center style="font-style: italic;"> Created with love and passion 💜 </center>
-<center style="font-style: italic;"> Timisoara, Romania </center>
-<center style="font-style: italic;"> sep 2023 - may 2024 </center>
+<center style="font-style: italic;"> Created with love and passion 💜 </center> <br>
+<center style="font-style: italic;"> Timisoara, Romania </center> <br>
+<center style="font-style: italic;"> sep 2023 - may 2024 </center> <br>
