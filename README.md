@@ -19,6 +19,8 @@ Welcome to the official repository of **WizzTech #19094 Robotics Team** for the 
 # Team Notebook
 All the details regarding our activity can be found in the team notebook. 
 
+<img src="images/CCR-0216.jpg" style="height: 600px">
+
 You can take a look at ours team notebook for this season right here: [WizzTech's Team Notebook](https://drive.google.com/file/d/1dHoYdEmT_0_Q6Z_s5RLlCmxhCNO6oM1o/view?usp=sharing)
 
 # The Programming team
