@@ -76,9 +76,9 @@ public class MainTeleOp extends OpMode {
         // --------- (BODO) movement general al robotului ---------
         drive.setWeightedDrivePower(
                 new Pose2d(
-                        -controller1.left_stick_y, // gen astea negative / pozitive sau schimbate intre ele
-                        -controller1.left_stick_x,
-                        -controller1.right_stick_x
+                        (-controller1.left_stick_y + controller2.left_stick_y) / 2, // gen astea negative / pozitive sau schimbate intre ele
+                        (-controller1.left_stick_x + controller2.left_stick_x) / 2,
+                        (-controller1.right_stick_x + controller2.right_stick_x) / 2
                 )
         );
 
@@ -204,6 +204,11 @@ public class MainTeleOp extends OpMode {
                 raise_value = 600 * slider_level;
                 robot.slider.raiseSlider(raise_value, RAISE_POWER);
             }
+        }
+
+        // emergency stop button
+        if (controller2.startButtonOnce()) {
+            stop();
         }
 
         // ------- printing the slider position -------
